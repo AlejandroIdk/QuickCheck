@@ -12,6 +12,7 @@
 		$id = (isset($_GET['userclass_id_up'])) ? $_GET['userclass_id_up'] : 0;
 		$id=limpiar_cadena($id);
 
+		/*== Verificando usuario_clase ==*/
     	$check_usuario_clase=conexion();
     	$check_usuario_clase=$check_usuario_clase->query("SELECT * FROM usuario_clase WHERE userclass_id='$id'");
 
