@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="wrapper">
+            <header class="text-center">
+                <h1>QR Code Generator</h1>
+                <p>URL o texto que tendrá el código:</p>
+            </header>
+            <div class="form-group">
+                cedula
+                <input type="text" class="form-control" id="text-input" placeholder="Enter text or URL">Nombres
+                <input type="text" class="form-control" id="text-input2" placeholder="Enter text or URL">Apellidos
+                <input type="text" class="form-control" id="text-input3" placeholder="Enter text or URL">
+                <button class="btn btn-primary btn-block" id="generate-btn">Generate QR</button>
+            </div>
+            <div class="qr-code text-center">
+                <img src="" alt="qr-code">
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shCzgM5+XfOcWS1BlyAe4Zm3hboLvqm+8w7to" crossorigin="anonymous"></script>
+    <!-- Tu script JS -->
+    <script src="script.js"></script>
+</body>
+
+</html>
