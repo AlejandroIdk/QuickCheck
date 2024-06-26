@@ -8,13 +8,15 @@
             </div>
 
             <!-- Contenedor para el formulario cuando se detecta un código QR -->
-            <div class="qr-detected-container" style="display: none;">
-                <form action="./php/escannear_usuario.php" method="POST">
-                    <h4 class="text-center">Student QR Detected!</h4>
-                    <input type="hidden" id="detected-qr-code" name="qr_code">
-                    <button type="submit" class="btn btn-dark form-control">Submit Attendance</button>
-                </form>
-            </div>
+<!-- Contenedor para el formulario cuando se detecta un código QR -->
+<div class="qr-detected-container" style="display: none;">
+    <form action="./php/escannear_usuario.php" method="POST">
+        <h4 class="text-center">¡Código QR del Estudiante Detectado!</h4>
+        <input type="hidden" id="detected-qr-code" name="qr_code">
+        <button type="submit" class="btn btn-dark form-control">Registrar Asistencia</button>
+    </form>
+</div>
+
         </div>
 
         <!-- Contenedor para la lista de asistencias -->
@@ -43,10 +45,11 @@
                             
                             // Preparar consulta SQL para obtener datos de asistencia
                             $stmt = $conn->prepare("SELECT a.asistencia_id, u.usuario_identificacion, c.clase_nombre, a.fecha
-                                FROM asistencia a
-                                LEFT JOIN usuario u ON u.usuario_identificacion = a.usuario_identificacion
-                                LEFT JOIN usuario_clase uc ON uc.clase_id = a.clase_id AND uc.usuario_identificacion = a.usuario_identificacion
-                                LEFT JOIN clases c ON c.clase_id = a.clase_id");
+                            FROM asistencia a
+                            LEFT JOIN usuario u ON u.usuario_identificacion = a.usuario_identificacion
+                            LEFT JOIN usuario_clase uc ON uc.clase_id = a.clase_id AND uc.usuario_identificacion = a.usuario_identificacion
+                            LEFT JOIN clases c ON c.clase_id = uc.clase_id");
+                        
                             
                             // Ejecutar la consulta
                             $stmt->execute();
@@ -58,7 +61,7 @@
                             foreach ($result as $row) {
                                 $attendanceID = $row["asistencia_id"];
                                 $usuarioIdentificacion = $row["usuario_identificacion"];
-                                $claseNombre = $row["clase_nombre"];
+                                $claseId = $row["clase_id"];
                                 $horaEntrada = $row["fecha"]; // Asumiendo que 'fecha' es la columna de hora de entrada
                             
                                 ?>
@@ -67,7 +70,7 @@
                                 <tr>
                                     <th scope="row"><?= $attendanceID ?></th>
                                     <td><?= $usuarioIdentificacion ?></td>
-                                    <td><?= $claseNombre ?></td>
+                                    <td><?= $claseId ?></td>
                                     <td><?= $horaEntrada ?></td>
                                     <td>
                                         <div class="action-button">
@@ -105,23 +108,18 @@
 <script>
     let scanner;
 
-    // Función para iniciar el escáner QR cuando se carga el documento
     function startScanner() {
         scanner = new Instascan.Scanner({ video: document.getElementById('interactive') });
 
-        // Listener para capturar el código QR escaneado
         scanner.addListener('scan', function (content) {
-            // Llenar el campo oculto con el código QR detectado
             $("#detected-qr-code").val(content);
             console.log(content);
             scanner.stop();
 
-            // Mostrar el formulario de detección de QR y ocultar el contenedor del escáner
             document.querySelector(".qr-detected-container").style.display = '';
             document.querySelector(".scanner-con").style.display = 'none';
         });
 
-        // Obtener las cámaras disponibles y comenzar el escaneo con la primera disponible
         Instascan.Camera.getCameras()
             .then(function (cameras) {
                 if (cameras.length > 0) {
@@ -137,14 +135,12 @@
             });
     }
 
-    // Iniciar el escáner cuando el documento esté completamente cargado
     document.addEventListener('DOMContentLoaded', startScanner);
 
-    // Función para eliminar una asistencia
     function deleteAttendance(id) {
-        if (confirm("Do you want to remove this attendance?")) {
-            // Redirigir para eliminar la asistencia mediante un endpoint específico
+        if (confirm("¿Seguro que deseas eliminar esta asistencia?")) {
             window.location = "./endpoint/delete-attendance.php?attendance=" + id;
         }
     }
 </script>
+
