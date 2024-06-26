@@ -6,13 +6,36 @@
     // Comprobación de existencia y contenido de la variable $busqueda para ajustar la consulta SQL
     if (isset($busqueda) && $busqueda != "") {
         // Consulta SQL para obtener los datos filtrados según la búsqueda
-        $consulta_datos = "SELECT * FROM usuario WHERE usuario_identificacion LIKE '%$busqueda%' OR usuario_nombre LIKE '%$busqueda%' OR usuario_email LIKE '%$busqueda%' OR rol_code LIKE '%$busqueda%' ORDER BY usuario_nombre ASC LIMIT $inicio,$registros";
+        $consulta_datos = "
+            SELECT usuario.*, roles.rol_nombre 
+            FROM usuario 
+            JOIN roles ON usuario.rol_code = roles.rol_code 
+            WHERE usuario.usuario_identificacion LIKE '%$busqueda%' 
+                OR usuario.usuario_nombre LIKE '%$busqueda%' 
+                OR usuario.usuario_apellido LIKE '%$busqueda%' 
+                OR usuario.usuario_email LIKE '%$busqueda%' 
+                OR usuario.rol_code LIKE '%$busqueda%' 
+            ORDER BY roles.rol_nombre ASC, usuario.usuario_nombre ASC 
+            LIMIT $inicio, $registros";
 
         // Consulta SQL para obtener el total de registros coincidentes con la búsqueda
-        $consulta_total = "SELECT COUNT(usuario_identificacion) FROM usuario WHERE usuario_nombre LIKE '%$busqueda%' OR usuario_identificacion LIKE '%$busqueda%' OR usuario_email LIKE '%$busqueda%' OR rol_code LIKE '%$busqueda%'";
+        $consulta_total = "
+            SELECT COUNT(usuario.usuario_identificacion) 
+            FROM usuario 
+            JOIN roles ON usuario.rol_code = roles.rol_code 
+            WHERE usuario.usuario_nombre LIKE '%$busqueda%' 
+                OR usuario.usuario_apellido LIKE '%$busqueda%' 
+                OR usuario.usuario_identificacion LIKE '%$busqueda%' 
+                OR usuario.usuario_email LIKE '%$busqueda%' 
+                OR usuario.rol_code LIKE '%$busqueda%'";
     } else {
         // Consulta SQL para obtener todos los datos si no hay filtro de búsqueda
-        $consulta_datos = "SELECT * FROM usuario WHERE usuario_identificacion ORDER BY usuario_nombre ASC LIMIT $inicio,$registros";
+        $consulta_datos = "
+            SELECT usuario.*, roles.rol_nombre 
+            FROM usuario 
+            JOIN roles ON usuario.rol_code = roles.rol_code 
+            ORDER BY roles.rol_nombre ASC, usuario.usuario_nombre ASC 
+            LIMIT $inicio, $registros";
 
         // Consulta SQL para obtener el total de registros en la tabla usuario
         $consulta_total = "SELECT COUNT(usuario_identificacion) FROM usuario";
@@ -42,6 +65,7 @@
                     <th>ROL</th>
                     <th>Usuario ID</th>
                     <th>Nombre</th>
+                    <th>Apellido</th>
                     <th>Email</th>
                     <th colspan="2">Opciones</th>
                 </tr>
@@ -59,9 +83,10 @@
             $tabla .= '
                 <tr class="has-text-centered">
                     <td>' . $contador . '</td>
-                    <td>' . $rows['rol_code'] . '</td>
+                    <td>' . $rows['rol_nombre'] . '</td>
                     <td>' . $rows['usuario_identificacion'] . '</td>
                     <td>' . $rows['usuario_nombre'] . '</td>
+                    <td>' . $rows['usuario_apellido'] . '</td>
                     <td>' . $rows['usuario_email'] . '</td>
                     <td>
                         <a href="index.php?vista=user_update&user_id_up=' . $rows['usuario_identificacion'] . '" class="button is-success is-rounded is-small">Actualizar</a>

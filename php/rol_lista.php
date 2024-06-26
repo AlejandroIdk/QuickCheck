@@ -4,12 +4,20 @@
 
     if(isset($busqueda) && $busqueda!=""){
 
-        $consulta_datos="SELECT * FROM roles WHERE rol_nombre LIKE '%$busqueda%' ORDER BY rol_nombre ASC LIMIT $inicio, $registros";
+        $consulta_datos="SELECT * 
+        FROM roles 
+        WHERE rol_nombre LIKE '%$busqueda%'
+        ORDER BY rol_nombre ASC LIMIT $inicio, $registros";
 
-        $consulta_total="SELECT COUNT(rol_code) FROM roles WHERE rol_nombre  LIKE '%$busqueda%'";
+        $consulta_total="SELECT COUNT(rol_code)
+        FROM roles 
+        WHERE rol_nombre LIKE '%$busqueda%'";
+
 
     }else {
-        $consulta_datos = "SELECT * FROM roles ORDER BY rol_nombre ASC LIMIT $inicio, $registros";
+        $consulta_datos = "SELECT * 
+        FROM roles
+        ORDER BY rol_nombre ASC LIMIT $inicio, $registros";
 
         $consulta_total = "SELECT COUNT(rol_code) FROM roles";
         

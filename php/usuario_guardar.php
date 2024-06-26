@@ -5,12 +5,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $rol = limpiar_cadena($_POST['rol_code'] ?? '');
     $nombre = limpiar_cadena($_POST['usuario_nombre'] ?? '');
+    $apellido = limpiar_cadena($_POST['usuario_apellido'] ?? '');
+
     $identificacion = limpiar_cadena($_POST['usuario_identificacion'] ?? '');
     $clave_1 = limpiar_cadena($_POST['usuario_clave_1'] ?? '');
     $clave_2 = limpiar_cadena($_POST['usuario_clave_2'] ?? '');
     $email = limpiar_cadena($_POST['usuario_email'] ?? '');
 
-    if ($rol == "" || $nombre == "" || $identificacion == "" || $clave_1 == "" || $clave_2 == "" || $email == "") {
+    if ($rol == "" || $nombre == ""  || $apellido == "" || $identificacion == "" || $clave_1 == "" || $clave_2 == "" || $email == "") {
         echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
@@ -32,6 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (
         !preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}$/", $nombre) ||
+        !preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}$/", $apellido) ||
         !preg_match("/^[0-9]{3,40}$/", $identificacion) ||
         !preg_match("/^[a-zA-Z0-9$@.-]{7,100}$/", $clave_1) ||
         !preg_match("/^[a-zA-Z0-9$@.-]{7,100}$/", $clave_2) ||
@@ -82,11 +85,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $clave = password_hash($clave_1, PASSWORD_BCRYPT, ["cost" => 10]);
 
-    $guardar_usuario = conexion()->prepare("INSERT INTO usuario(rol_code, usuario_nombre, usuario_identificacion, usuario_clave, usuario_email) VALUES(:rol, :nombre, :identificacion, :clave, :email)");
+    $guardar_usuario = conexion()->prepare("INSERT INTO usuario(rol_code, usuario_nombre, usuario_apellido, usuario_identificacion, usuario_clave, usuario_email) VALUES(:rol, :nombre, :apellido, :identificacion, :clave, :email)");
 
     $marcadores = [
         ":rol" => $rol,
         ":nombre" => $nombre,
+        ":apellido" => $apellido,
         ":identificacion" => $identificacion,
         ":clave" => $clave,
         ":email" => $email

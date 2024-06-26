@@ -4,13 +4,17 @@
 
 	if(isset($busqueda) && $busqueda!=""){
 
-		$consulta_datos="SELECT * FROM clases WHERE clase_nombre LIKE '%$busqueda%' OR clase_ubicacion LIKE '%$busqueda%' ORDER BY clase_nombre ASC LIMIT $inicio,$registros";
+		$consulta_datos="SELECT * FROM clases
+		WHERE clase_nombre LIKE '%$busqueda%' OR clase_ubicacion LIKE '%$busqueda%' 
+		ORDER BY clase_nombre ASC LIMIT $inicio,$registros";
 
-		$consulta_total="SELECT COUNT(clase_id) FROM clases WHERE clase_nombre LIKE '%$busqueda%' OR clase_ubicacion LIKE '%$busqueda%'";
+		$consulta_total="SELECT COUNT(clase_id) FROM clases 
+		WHERE clase_nombre LIKE '%$busqueda%' OR clase_ubicacion LIKE '%$busqueda%'";
 
 	}else{
 
-		$consulta_datos="SELECT * FROM clases ORDER BY clase_nombre ASC LIMIT $inicio,$registros";
+		$consulta_datos="SELECT * FROM clases
+		ORDER BY clase_nombre ASC LIMIT $inicio,$registros";
 
 		$consulta_total="SELECT COUNT(clase_id) FROM clases";
 		
@@ -33,7 +37,7 @@
                 <tr class="has-text-centered">
                 	<th>#</th>
                     <th>Nombre</th>
-                    <th>Ubicación</th>
+                    <th>Salón</th>
                     <th>Salón</th>
                     <th colspan="2">Opciones</th>
                 </tr>
@@ -49,7 +53,7 @@
 				<tr class="has-text-centered" >
 					<td>'.$contador.'</td>
                     <td>'.$rows['clase_nombre'].'</td>
-                    <td>'.substr($rows['clase_ubicacion'],0,25).'</td>
+                    <td>'.$rows['clase_ubicacion'].'</td>
                     <td>
                         <a href="index.php?vista=user_class_category&category_id='.$rows['clase_id'].'" class="button is-link is-rounded is-small">Ver Estudiantes</a>
                     </td>

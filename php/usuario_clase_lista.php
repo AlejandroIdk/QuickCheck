@@ -10,19 +10,36 @@ $campos = "usuario_clase.userclass_id, usuario_clase.usuario_identificacion, cla
 // Construcción de consultas SQL basadas en condiciones
 if (isset($busqueda) && $busqueda != "") {
     // Consulta cuando hay término de búsqueda
-    $consulta_datos = "SELECT $campos FROM usuario_clase INNER JOIN clases ON usuario_clase.clase_id = clases.clase_id WHERE usuario_clase.usuario_clase_codigo LIKE '%$busqueda%' OR usuario_clase.usuario_clase_nombre LIKE '%$busqueda%' ORDER BY usuario_clase.usuario_identificacion ASC LIMIT $inicio, $registros";
+    $consulta_datos = "SELECT $campos FROM usuario_clase
+    INNER JOIN clases ON usuario_clase.clase_id = clases.clase_id
+    WHERE usuario_clase.usuario_clase_codigo LIKE '%$busqueda%'
+    OR usuario_clase.usuario_clase_nombre LIKE '%$busqueda%'
+    ORDER BY usuario_clase.usuario_identificacion ASC LIMIT $inicio, $registros";
 
-    $consulta_total = "SELECT COUNT(userclass_id) FROM usuario_clase WHERE usuario_clase_codigo LIKE '%$busqueda%' OR usuario_clase_nombre LIKE '%$busqueda%'";
+    $consulta_total = "SELECT COUNT(userclass_id) 
+    FROM usuario_clase 
+    WHERE usuario_clase_codigo LIKE '%$busqueda%' 
+    OR usuario_clase_nombre LIKE '%$busqueda%'";
 
 } elseif ($clase_id > 0) {
     // Consulta cuando se filtra por ID de clase
-    $consulta_datos = "SELECT $campos FROM usuario_clase INNER JOIN clases ON usuario_clase.clase_id = clases.clase_id WHERE usuario_clase.clase_id = '$clase_id' ORDER BY usuario_clase.usuario_identificacion ASC LIMIT $inicio, $registros";
+    $consulta_datos = "SELECT $campos
+    FROM usuario_clase INNER JOIN clases 
+    ON usuario_clase.clase_id = clases.clase_id 
+    WHERE usuario_clase.clase_id = '$clase_id' 
+    ORDER BY usuario_clase.usuario_identificacion ASC LIMIT $inicio, $registros";
 
-    $consulta_total = "SELECT COUNT(userclass_id) FROM usuario_clase WHERE clase_id = '$clase_id'";
+    $consulta_total = "SELECT COUNT(userclass_id) 
+    FROM usuario_clase 
+    WHERE clase_id = '$clase_id'";
     
 } else {
     // Consulta general sin filtros específicos
-    $consulta_datos = "SELECT $campos FROM usuario_clase INNER JOIN clases ON usuario_clase.clase_id = clases.clase_id ORDER BY usuario_clase.usuario_identificacion ASC LIMIT $inicio, $registros";
+    $consulta_datos = "SELECT $campos 
+    FROM usuario_clase 
+    INNER JOIN clases ON usuario_clase.clase_id = clases.clase_id 
+    ORDER BY usuario_clase.usuario_identificacion ASC LIMIT $inicio, $registros";
+
 
     $consulta_total = "SELECT COUNT(userclass_id) FROM usuario_clase";
 }

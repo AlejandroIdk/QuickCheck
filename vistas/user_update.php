@@ -34,51 +34,74 @@
 
         <input type="hidden" name="usuario_identificacion" value="<?php echo $datos['usuario_identificacion']; ?>" required>
 
-        <div class="columns">
-            <div class="column">
-                <div class="control">
-                    <label>Rol</label>
-                    <input class="input" type="text" name="rol_code" pattern="[0-9]+" maxlength="5" required value="<?php echo $datos['rol_code']; ?>">
-                </div>
-            </div>
-            <div class="column">
-                <div class="control">
-                    <label>Email</label>
-                    <input class="input" type="email" name="usuario_email" maxlength="70" value="<?php echo $datos['usuario_email']; ?>">
-                </div>
-            </div>
-        </div>
-
-        <div class="columns">
-            <div class="column">
-                <div class="control">
-                    <label>Nombres</label>
-                    <input class="input" type="text" name="usuario_nombre" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" maxlength="40" required value="<?php echo $datos['usuario_nombre']; ?>">
-                </div>
-            </div>
-
-            <div class="column">
-                <div class="control">
-                    <label>Identificacion</label>
-                    <input class="input" type="text" name="usuario_identificacion" pattern="[0-9]{3,10}" maxlength="10" required value="<?php echo $datos['usuario_identificacion']; ?>">
+        <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="rol_code">Rol:</label>
+                <div class="select">
+                    <select class="form-control" name="rol_code">
+                        <option value="" selected>Seleccione una opción</option>
+                        <?php
+                        $usuarios = conexion()->query("SELECT * FROM roles");
+                        if($usuarios->rowCount() > 0){
+                            $usuarios = $usuarios->fetchAll();
+                            foreach($usuarios as $usuario){
+                                echo '<option value="'.$usuario['rol_code'].'">'.$usuario['rol_nombre'].'</option>';
+                            }
+                        }
+                        ?>
+                    </select>
                 </div>
             </div>
         </div>
-
-        <div class="columns">
-            <div class="column">
-                <div class="control">
-                    <label>Clave</label>
-                    <input class="input" type="password" name="usuario_clave_1" pattern="[a-zA-Z0-9$@.-]{7,100}" maxlength="100">
-                </div>
-            </div>
-            <div class="column">
-                <div class="control">
-                    <label>Repetir clave</label>
-                    <input class="input" type="password" name="usuario_clave_2" pattern="[a-zA-Z0-9$@.-]{7,100}" maxlength="100">
-                </div>
+    </div> 
+    
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="usuario_nombre">Nombre:</label>
+                <input type="text" class="form-control" id="usuario_nombre" name="usuario_nombre" required pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" maxlength="40" value="<?php echo $datos['usuario_nombre']; ?>">
             </div>
         </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="usuario_apellido">Apellido:</label>
+                <input type="text" class="form-control" id="usuario_apellido" name="usuario_apellido" required pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" maxlength="40" value="<?php echo $datos['usuario_apellido']; ?>">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="usuario_identificacion">Identificación:</label>
+                <input type="text" class="form-control" id="usuario_identificacion" name="usuario_identificacion" required pattern="{3,40}" maxlength="10" value="<?php echo $datos['usuario_identificacion']; ?>"readonly>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="usuario_email">Email:</label>
+                <input type="email" class="form-control" id="usuario_email" name="usuario_email" maxlength="70" value="<?php echo $datos['usuario_email']; ?>">
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="usuario_clave_1">Clave:</label>
+                <input type="password" class="form-control" id="usuario_clave_1" name="usuario_clave_1" required pattern="[a-zA-Z0-9$@.-]{7,100}" maxlength="100">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="usuario_clave_2">Confirmar Clave:</label>
+                <input type="password" class="form-control" id="usuario_clave_2" name="usuario_clave_2" required pattern="[a-zA-Z0-9$@.-]{7,100}" maxlength="100">
+            </div>
+        </div>
+    </div>
+
         <p class="has-text-centered">
             <button type="submit" class="button is-success is-rounded">Actualizar</button>
         </p>

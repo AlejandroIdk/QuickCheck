@@ -29,11 +29,11 @@
     }
 
     if($ubicacion!=""){
-    	if(verificar_datos("[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{5,150}",$ubicacion)){
+    	if(verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{4,50}",$ubicacion)){
 	        echo '
 	            <div class="notification is-danger is-light">
 	                <strong>¡Ocurrio un error inesperado!</strong><br>
-	                La UBICACION no coincide con el formato solicitado
+	                El salón no coincide con el formato solicitado
 	            </div>
 	        ';
 	        exit();
@@ -71,14 +71,14 @@
         echo '
             <div class="notification is-info is-light">
                 <strong>¡clases REGISTRADA!</strong><br>
-                La categoría se registro con exito
+                La clase se registro con exito
             </div>
         ';
     }else{
         echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrio un error inesperado!</strong><br>
-                No se pudo registrar la categoría, por favor intente nuevamente
+                No se pudo registrar la clase, por favor intente nuevamente
             </div>
         ';
     }
