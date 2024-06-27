@@ -1,3 +1,5 @@
+como hago para que esto
+
 <?php
 
 // Inicio para la paginación
@@ -126,3 +128,158 @@ if ($total >= 1 && $pagina <= $Npaginas) {
 }
 
 ?>
+
+muestre codigo como aqui
+
+
+<div class="main">
+        
+        <div class="student-container">
+            <div class="student-list">
+                <div class="title">
+                    <h4>List of Students</h4>
+                    <button class="btn btn-dark" data-toggle="modal" data-target="#addStudentModal">Add Student</button>
+                </div>
+                <hr>
+                <div class="table-container table-responsive">
+                    <table class="table text-center table-sm" id="studentTable">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Course & Section</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <?php 
+                                include ('./conn/conn.php');
+
+                                $stmt = $conn->prepare("SELECT * FROM tbl_student");
+                                $stmt->execute();
+                
+                                $result = $stmt->fetchAll();
+                
+                                foreach ($result as $row) {
+                                    $studentID = $row["tbl_student_id"];
+                                    $studentName = $row["student_name"];
+                                    $studentCourse = $row["course_section"];
+                                    $qrCode = $row["generated_code"];
+                                ?>
+
+                                <tr>
+                                    <th scope="row" id="studentID-<?= $studentID ?>"><?= $studentID ?></th>
+                                    <td id="studentName-<?= $studentID ?>"><?= $studentName ?></td>
+                                    <td id="studentCourse-<?= $studentID ?>"><?= $studentCourse ?></td>
+                                    <td>
+                                        <div class="action-button">
+                                            <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#qrCodeModal<?= $studentID ?>"><img src="https://cdn-icons-png.flaticon.com/512/1341/1341632.png" alt="" width="16"></button>
+
+                                            <!-- QR Modal -->
+                                            <div class="modal fade" id="qrCodeModal<?= $studentID ?>" tabindex="-1" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title"><?= $studentName ?>'s QR Code</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body text-center">
+                                                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=<?= $qrCode ?>" alt="" width="300">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <button class="btn btn-secondary btn-sm" onclick="updateStudent(<?= $studentID ?>)">&#128393;</button>
+                                            <button class="btn btn-danger btn-sm" onclick="deleteStudent(<?= $studentID ?>)">&#10006;</button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <?php
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+
+    <!-- Data Table -->
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+
+    <script>
+        $(document).ready( function () {
+            $('#studentTable').DataTable();
+        });
+
+        function updateStudent(id) {
+            $("#updateStudentModal").modal("show");
+
+            let updateStudentId = $("#studentID-" + id).text();
+            let updateStudentName = $("#studentName-" + id).text();
+            let updateStudentCourse = $("#studentCourse-" + id).text();
+
+            $("#updateStudentId").val(updateStudentId);
+            $("#updateStudentName").val(updateStudentName);
+            $("#updateStudentCourse").val(updateStudentCourse);
+        }
+
+        function deleteStudent(id) {
+            if (confirm("Do you want to delete this student?")) {
+                window.location = "./endpoint/delete-student.php?student=" + id;
+            }
+        }
+
+        function generateRandomCode(length) {
+            const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+            let randomString = '';
+
+            for (let i = 0; i < length; i++) {
+                const randomIndex = Math.floor(Math.random() * characters.length);
+                randomString += characters.charAt(randomIndex);
+            }
+
+            return randomString;
+        }
+
+        function generateQrCode() {
+            const qrImg = document.getElementById('qrImg');
+
+            let text = generateRandomCode(10);
+            $("#generatedCode").val(text);
+
+            if (text === "") {
+                alert("Please enter text to generate a QR code.");
+                return;
+            } else {
+                const apiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(text)}`;
+
+                qrImg.src = apiUrl;
+                document.getElementById('studentName').style.pointerEvents = 'none';
+                document.getElementById('studentCourse').style.pointerEvents = 'none';
+                document.querySelector('.modal-close').style.display = '';
+                document.querySelector('.qr-con').style.display = '';
+                document.querySelector('.qr-generator').style.display = 'none';
+            }
+        }
+    </script>
+    
+</body>
+</html>
+
+que es lo que hacer ver el codigo, hazmelo pero con lo que te di de primero
