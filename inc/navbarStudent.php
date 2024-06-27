@@ -15,6 +15,9 @@
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
 
+            <a href="index.php?vista=home" class="navbar-item">Inicio</a>
+
+
             <div class="navbar-item has-dropdown is-hoverable">
                 <a class="navbar-link">Clases</a>
                 <div class="navbar-dropdown">
@@ -35,8 +38,7 @@
             <div class="navbar-item has-dropdown is-hoverable">
                 <a class="navbar-link">Asistencia</a>
                 <div class="navbar-dropdown">
-                    <a href="index.php?vista=scanner_user" class="navbar-item">Scannear</a>
-                    <a href="index.php?vista=user_class_list" class="navbar-item">Lista</a>
+                    <a href="index.php?vista=attendance_list" class="navbar-item">Lista</a>
                     <a href="index.php?vista=user_class_category" class="navbar-item">Por categoría</a>
                     <a href="index.php?vista=user_class_search" class="navbar-item">Buscar</a>
                 </div>
