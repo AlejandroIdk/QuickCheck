@@ -103,7 +103,7 @@
     </div>
 
         <p class="has-text-centered">
-            <button type="submit" class="button is-success is-rounded">Actualizar</button>
+            <button type="submit" class="button btn btn-primary is-rounded mt-5">Actualizar</button>
         </p>
     </form>
     <?php 
