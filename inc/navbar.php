@@ -57,11 +57,11 @@
                     <a href="index.php?vista=scanner_user" class="navbar-item">Scannear</a>
                     <a href="index.php?vista=attendance_list" class="navbar-item">Lista</a>
                     <a href="index.php?vista=user_class_category" class="navbar-item">Por categoría</a>
-                    <a href="index.php?vista=user_class_search" class="navbar-item">Buscar</a>
+                    <!-- <a href="index.php?vista=user_class_search" class="navbar-item">Buscar</a> -->
                 </div>
             </div>
 
-            <!-- PARA QUE FUNCIONE EL BUSCADOR DEBO ELIMINAR EL DIV DE ASISTENCIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -->
+            <!-- PARA QUE FUNCIONE EL BUSCADOR DEBO ELIMINAR EL SEARCH DE ASISTENCIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -->
             
         </div>
 

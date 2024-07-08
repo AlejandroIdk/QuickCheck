@@ -9,7 +9,7 @@
 			"roles"=>"rol_search",
 			"usuario"=>"user_search",
 			"clases"=>"class_search",
-			"usuario_clase"=>"userClass_search"
+			"usuario_clase"=>"user_Class_search"
 		];
 
 		$modulos_url=$modulos_url[$modulo_buscador];

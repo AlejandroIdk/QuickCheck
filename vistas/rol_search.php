@@ -11,12 +11,12 @@
             require_once "./php/buscador.php";
         }
 
-        if(!isset($_SESSION['busqueda_rol']) && empty($_SESSION['busqueda_rol'])){
+        if(!isset($_SESSION['busqueda_roles']) && empty($_SESSION['busqueda_roles'])){
     ?>
     <div class="columns">
         <div class="column">
             <form action="" method="POST" autocomplete="off" >
-                <input type="hidden" name="modulo_buscador" value="usuario">   
+                <input type="hidden" name="modulo_buscador" value="roles">   
                 <div class="field is-grouped">
                     <p class="control is-expanded">
                         <input class="input is-rounded" type="text" name="txt_buscador" placeholder="¿Qué estas buscando?" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,30}" maxlength="30" >
@@ -32,16 +32,16 @@
     <div class="columns">
         <div class="column">
             <form class="has-text-centered mt-6 mb-6" action="" method="POST" autocomplete="off" >
-                <input type="hidden" name="modulo_buscador" value="rol"> 
-                <input type="hidden" name="eliminar_buscador" value="rol">
-                <p>Estas buscando <strong>“<?php echo $_SESSION['busqueda_rol']; ?>”</strong></p>
+                <input type="hidden" name="modulo_buscador" value="roles"> 
+                <input type="hidden" name="eliminar_buscador" value="roles">
+                <p>Estas buscando <strong>“<?php echo $_SESSION['busqueda_roles']; ?>”</strong></p>
                 <br>
                 <button type="submit" class="button is-danger is-rounded">Eliminar busqueda</button>
             </form>
         </div>
     </div>
     <?php
-            if(isset($_GET['user_id_del'])){
+            if(isset($_GET['rol_code_del'])){
                 require_once "./php/rol_eliminar.php";
             }
 
@@ -55,9 +55,9 @@
             }
 
             $pagina=limpiar_cadena($pagina);
-            $url="index.php?vista=user_search&page=";
+            $url="index.php?vista=rol_search&page=";
             $registros=15;
-            $busqueda=$_SESSION['busqueda_rol'];
+            $busqueda=$_SESSION['busqueda_roles'];
 
             require_once "./php/rol_lista.php";
         } 
