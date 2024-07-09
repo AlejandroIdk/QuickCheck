@@ -1,44 +1,44 @@
 <?php
 	// Almacenando datos
-    $product_id_del=limpiar_cadena($_GET['product_id_del']);
+    $userclass_id_del=limpiar_cadena($_GET['userclass_id_del']);
 
     // Verificando usuario_clase
-    $check_usuario_clase=conexion();
-    $check_usuario_clase=$check_usuario_clase->query("SELECT * FROM usuario_clase WHERE userclass_id='$product_id_del'");
+    $check_userclass=conexion();
+    $check_userclass=$check_userclass->query("SELECT * FROM usuario_clase WHERE userclass_id='$userclass_id_del'");
 
-    if($check_usuario_clase->rowCount()==1){
+    if($check_userclass->rowCount()==1){
 
-    	$datos=$check_usuario_clase->fetch();
+    	$datos=$check_userclass->fetch();
 
-    	$eliminar_usuario_clase=conexion();
-    	$eliminar_usuario_clase=$eliminar_usuario_clase->prepare("DELETE FROM usuario_clase WHERE userclass_id=:id");
+    	$eliminar_userclass=conexion();
+    	$eliminar_userclass=$eliminar_userclass->prepare("DELETE FROM usuario_clase WHERE userclass_id=:id");
 
-    	$eliminar_usuario_clase->execute([":id"=>$product_id_del]);
+    	$eliminar_userclass->execute([":id"=>$userclass_id_del]);
 
-    	if($eliminar_usuario_clase->rowCount()==1){
+    	if($eliminar_userclass->rowCount()==1){
 
 
 	        echo '
 	            <div class="notification is-info is-light">
-	                <strong>¡usuario_clase ELIMINADO!</strong><br>
-	                Los datos del usuario_clase se eliminaron con exito
+	                <strong>¡Inscripcion ELIMINADA!</strong><br>
+	                Los datos de la inscripcion se eliminaron con exito
 	            </div>
 	        ';
 	    }else{
 	        echo '
 	            <div class="notification is-danger is-light">
 	                <strong>¡Ocurrio un error inesperado!</strong><br>
-	                No se pudo eliminar el usuario_clase, por favor intente nuevamente
+	                No se pudo eliminar la inscripcion, por favor intente nuevamente
 	            </div>
 	        ';
 	    }
-	    $eliminar_usuario_clase=null;
+	    $eliminar_userclass=null;
     }else{
         echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrio un error inesperado!</strong><br>
-                El usuario_clase que intenta eliminar no existe
+                La inscripcion que intenta eliminar no existe
             </div>
         ';
     }
-    $check_usuario_clase=null;
+    $check_userclass=null;

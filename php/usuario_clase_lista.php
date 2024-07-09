@@ -82,10 +82,10 @@ if ($total >= 1 && $pagina <= $Npaginas) {
             <td>' . $row['usuario_identificacion'] . '</td>
             <td>' . $row['clase_nombre'] . '</td>
             <td>
-                <a href="index.php?vista=user_class_update&userclass_id=' . $row['userclass_id'] . '" class="button is-success is-rounded is-small">Actualizar</a>
+                <a href="index.php?vista=user_class_update&userclass_id_up=' . $row['userclass_id'] . '" class="button is-success is-rounded is-small">Actualizar</a>
             </td>
             <td>
-                <a href="' . $url . '&pagina=' . $pagina . '&userclass_id=' . $row['userclass_id'] . '" class="button is-danger is-rounded is-small">Eliminar</a>
+                <a href="' . $url . '&pagina=' . $pagina . '&userclass_id_del=' . $row['userclass_id'] . '" class="button is-danger is-rounded is-small">Eliminar</a>
             </td>
         </tr>';
         $contador++;

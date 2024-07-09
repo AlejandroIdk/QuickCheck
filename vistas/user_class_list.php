@@ -7,7 +7,7 @@
     <?php
         require_once "./php/main.php";
 
-        if(isset($_GET['product_id_del'])){
+        if(isset($_GET['userclass_id_del'])){
             require_once "./php/usuario_clase_eliminar.php";
         }
 

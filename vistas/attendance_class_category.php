@@ -16,7 +16,7 @@
                 if($clases->rowCount()>0){
                     $clases=$clases->fetchAll();
                     foreach($clases as $row){
-                        echo '<a href="index.php?vista=user_class_category&category_id='.$row['clase_id'].'" class="button is-link is-inverted is-fullwidth">'.$row['clase_nombre'].'</a>';
+                        echo '<a href="index.php?vista=attendance_class_category&category_id='.$row['clase_id'].'" class="button is-link is-inverted is-fullwidth">'.$row['clase_nombre'].'</a>';
                     }
                 }else{
                     echo '<p class="has-text-centered" >No hay categorías registradas</p>';
@@ -44,7 +44,7 @@
                     require_once "./php/main.php";
 
                     # Eliminar producto #
-                    if(isset($_GET['product_id_del'])){
+                    if(isset($_GET['attendance_id_del'])){
                         require_once "./php/asistencia_eliminar.php";
                     }
 

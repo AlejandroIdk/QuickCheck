@@ -76,10 +76,10 @@
                     <td>' . $row['clase_nombre'] . '</td>
                     <td>' . $row['fecha'] . '</td>
                     <td>
-                        <a href="index.php?vista=asistencia_update&asistencia_id=' . $row['asistencia_id'] . '" class="button is-success is-rounded is-small">Actualizar</a>
+                        <a href="index.php?vista=attendance_update&attendance_id_up=' . $row['asistencia_id'] . '" class="button is-success is-rounded is-small">Actualizar</a>
                     </td>
                     <td>
-                        <a href="' . $url . $pagina . '&asistencia_id_del=' . $row['asistencia_id'] . '" class="button is-danger is-rounded is-small">Eliminar</a>
+                        <a href="' . $url . $pagina . '&attendance_id_del=' . $row['asistencia_id'] . '" class="button is-danger is-rounded is-small">Eliminar</a>
                     </td>
                 </tr>
             ';

@@ -8,7 +8,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         try {
             $conn = conexion();
 
-            // Obtener la información del usuario y la clase asociada al código QR
+            date_default_timezone_set('America/Bogota');
+
             $stmt = $conn->prepare("SELECT uc.usuario_identificacion, uc.clase_id, c.clase_nombre FROM usuario_clase uc
                 LEFT JOIN clases c ON c.clase_id = uc.clase_id
                 WHERE uc.generated_code = :generated_code LIMIT 1");
@@ -19,25 +20,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($result) {
                 $usuarioIdentificacion = $result['usuario_identificacion'];
                 $claseId = $result['clase_id'];
-                $horaEntrada = date("Y-m-d H:i:s"); // Hora actual de entrada
+                $horaEntrada = date("Y-m-d H:i:s");
 
-                // Insertar registro de asistencia
-                $stmt = $conn->prepare("INSERT INTO asistencia (usuario_identificacion, clase_id, fecha) VALUES (:usuario_identificacion, :clase_id, :fecha)");
-                $stmt->bindParam(':usuario_identificacion', $usuarioIdentificacion);
-                $stmt->bindParam(':clase_id', $claseId); // Utiliza el id correcto de la clase
-                $stmt->bindParam(':fecha', $horaEntrada);
-                $stmt->execute();
+                $stmtInsert = $conn->prepare("INSERT INTO asistencia (usuario_identificacion, clase_id, fecha) VALUES (:usuario_identificacion, :clase_id, :fecha)");
+                $stmtInsert->bindParam(':usuario_identificacion', $usuarioIdentificacion);
+                $stmtInsert->bindParam(':clase_id', $claseId);
+                $stmtInsert->bindParam(':fecha', $horaEntrada);
+                $stmtInsert->execute();
+
+                echo '<script type="text/javascript">';
+                echo 'setTimeout(function() { window.history.go(-1); }, 2000);';
+                echo '</script>';
+
+                exit;
 
             } else {
-                echo "No se encontró ningún estudiante asociado al código QR.";
+                echo "No se encontró información para el código QR proporcionado.";
             }
+
         } catch (PDOException $e) {
-            echo "Error al registrar la asistencia: " . $e->getMessage();
+            echo "Error de conexión o consulta: " . $e->getMessage();
         }
     } else {
-        echo "No se detectó ningún código QR.";
+        echo "No se recibió el código QR.";
     }
-} else {
-    echo "Método de solicitud incorrecto.";
 }
 ?>

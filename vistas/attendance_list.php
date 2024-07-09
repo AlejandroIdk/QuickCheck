@@ -7,7 +7,7 @@
     <?php
         require_once "./php/main.php";
 
-        if(isset($_GET['user_id_del'])){
+        if(isset($_GET['asistencia_id_del'])){
             require_once "./php/asistencia_eliminar.php";
         }
 

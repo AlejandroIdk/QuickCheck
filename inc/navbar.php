@@ -56,8 +56,10 @@
                 <div class="navbar-dropdown">
                     <a href="index.php?vista=scanner_user" class="navbar-item">Scannear</a>
                     <a href="index.php?vista=attendance_list" class="navbar-item">Lista</a>
-                    <a href="index.php?vista=user_class_category" class="navbar-item">Por categoría</a>
-                    <!-- <a href="index.php?vista=user_class_search" class="navbar-item">Buscar</a> -->
+                    <a href="index.php?vista=attendance_class_category" class="navbar-item">Por categoría</a>
+                    <a href="index.php?vista=attendance_search" class="navbar-item">Buscar</a>
+
+
                 </div>
             </div>
 

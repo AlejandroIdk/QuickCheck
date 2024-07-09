@@ -1,7 +1,7 @@
 <?php
 require_once "./php/main.php";
 
-$id = (isset($_GET['userclass_id_up'])) ? $_GET['userclass_id_up'] : 0;
+$id = (isset($_GET['attendance_id_up'])) ? $_GET['attendance_id_up'] : 0;
 $id = limpiar_cadena($id);
 
 ?>
@@ -10,18 +10,18 @@ $id = limpiar_cadena($id);
     <?php
     include "./inc/btn_back.php";
 
-    /*== Verificando usuario ==*/
-    $check_usuario = conexion()->prepare("SELECT * FROM usuario_clase WHERE userclass_id=:id");
-    $check_usuario->execute([':id' => $id]);
+    // Verificar si la asistencia existe
+    $check_asistencia = conexion()->prepare("SELECT * FROM asistencia WHERE asistencia_id = :id");
+    $check_asistencia->execute([':id' => $id]);
 
-    if ($check_usuario->rowCount() > 0) {
-        $datos = $check_usuario->fetch();
+    if ($check_asistencia->rowCount() > 0) {
+        $datos = $check_asistencia->fetch();
     ?>
 
     <div class="form-rest mb-6 mt-6"></div>
 
-    <form action="./php/usuario_clase_actualizar.php" method="POST" class="FormularioAjax" autocomplete="off">
-        <input type="hidden" name="userclass_id" value="<?php echo $datos['userclass_id']; ?>">
+    <form action="./php/asistencia_actualizar.php" method="POST" class="FormularioAjax" autocomplete="off">
+        <input type="hidden" name="asistencia_id" value="<?php echo $datos['asistencia_id']; ?>">
 
         <div class="columns">
             <div class="column">
@@ -60,22 +60,11 @@ $id = limpiar_cadena($id);
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
+            <div class="column">
                 <div class="form-group">
-                    <button type="button" class="btn btn-secondary btn-rounded" onclick="generateQrCode()">Generar Código QR</button>
+                    <label for="fecha">Fecha de Asistencia:</label><br>
+                    <input class="form-control mt-3" type="datetime" name="fecha" value="<?php echo $datos['fecha']; ?>" required>
                 </div>
-            </div>
-        </div>
-
-        <!-- QR Code Display -->
-        <div class="row">
-            <div class="col-md-12 qr-con text-center" style="display: none;">
-                <input type="hidden" class="form-control" id="generatedCode" name="generated_code" value="<?php echo $datos['generated_code']; ?>">
-                <p>Toma una foto con tu código QR.</p>
-                <img class="mb-4" src="" id="qrImg" alt="">
             </div>
         </div>
 
@@ -90,40 +79,3 @@ $id = limpiar_cadena($id);
     }
     ?>
 </div>
-
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
-
-<!-- QR Code Generator Script -->
-<script>
-    function generateRandomCode(length) {
-        const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-        let randomString = '';
-
-        for (let i = 0; i < length; i++) {
-            const randomIndex = Math.floor(Math.random() * characters.length);
-            randomString += characters.charAt(randomIndex);
-        }
-
-        return randomString;
-    }
-
-    function generateQrCode() {
-        const qrImg = document.getElementById('qrImg');
-
-        let text = generateRandomCode(10);
-        $("#generatedCode").val(text);
-
-        if (text === "") {
-            alert("Por favor, ingresa un texto para generar un código QR.");
-            return;
-        } else {
-            const apiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(text)}`;
-
-            qrImg.src = apiUrl;
-            document.querySelector('.qr-con').style.display = '';
-        }
-    }
-</script>
