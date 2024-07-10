@@ -59,7 +59,6 @@
                     <a href="index.php?vista=attendance_class_category" class="navbar-item">Por categoría</a>
                     <a href="index.php?vista=attendance_search" class="navbar-item">Buscar</a>
 
-
                 </div>
             </div>
 

@@ -1,52 +1,52 @@
 <?php
-    $clase_id_del=limpiar_cadena($_GET['clase_id_del']);
+$clase_id_del = limpiar_cadena($_GET['clase_id_del']);
 
-    $check_clases=conexion();
-    $check_clases=$check_clases->query("SELECT clase_id FROM clases WHERE clase_id='$clase_id_del'");
-    
-    if($check_clases->rowCount()==1){
+$check_clases = conexion();
+$check_clases = $check_clases->query("SELECT clase_id FROM clases WHERE clase_id='$clase_id_del'");
 
-    	$check_usuario_clase=conexion();
-    	$check_usuario_clase=$check_usuario_clase->query("SELECT clase_id FROM usuario_clase WHERE clase_id='$clase_id_del' LIMIT 1");
+if ($check_clases->rowCount() == 1) {
 
-    	if($check_usuario_clase->rowCount()<=0){
+	$check_usuario_clase = conexion();
+	$check_usuario_clase = $check_usuario_clase->query("SELECT clase_id FROM usuario_clase WHERE clase_id='$clase_id_del' LIMIT 1");
 
-    		$eliminar_clases=conexion();
-	    	$eliminar_clases=$eliminar_clases->prepare("DELETE FROM clases WHERE clase_id=:id");
+	if ($check_usuario_clase->rowCount() <= 0) {
 
-	    	$eliminar_clases->execute([":id"=>$clase_id_del]);
+		$eliminar_clases = conexion();
+		$eliminar_clases = $eliminar_clases->prepare("DELETE FROM clases WHERE clase_id=:id");
 
-	    	if($eliminar_clases->rowCount()==1){
-		        echo '
+		$eliminar_clases->execute([":id" => $clase_id_del]);
+
+		if ($eliminar_clases->rowCount() == 1) {
+			echo '
 		            <div class="notification is-info is-light">
 		                <strong>¡clases ELIMINADA!</strong><br>
 		                Los datos de la Clase se eliminaron con exito
 		            </div>
 		        ';
-		    }else{
-		        echo '
+		} else {
+			echo '
 		            <div class="notification is-danger is-light">
 		                <strong>¡Ocurrio un error inesperado!</strong><br>
 		                No se pudo eliminar la Clase, por favor intente nuevamente
 		            </div>
 		        ';
-		    }
-		    $eliminar_clases=null;
-    	}else{
-    		echo '
+		}
+		$eliminar_clases = null;
+	} else {
+		echo '
 	            <div class="notification is-danger is-light">
 	                <strong>¡Ocurrio un error inesperado!</strong><br>
 	                No podemos eliminar la Clase ya que tiene un usuario asociados
 	            </div>
 	        ';
-    	}
-    	$check_usuario_clase=null;
-    }else{
-    	echo '
+	}
+	$check_usuario_clase = null;
+} else {
+	echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrio un error inesperado!</strong><br>
                 La clases que intenta eliminar no existe
             </div>
         ';
-    }
-    $check_clases=null;
+}
+$check_clases = null;

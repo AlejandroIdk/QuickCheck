@@ -119,4 +119,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             No se ha enviado el formulario correctamente
           </div>';
 }
-?>

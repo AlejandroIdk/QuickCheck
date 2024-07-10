@@ -5,70 +5,66 @@
 
 <div class="container pb-6 pt-6">
     <?php
-        require_once "./php/main.php";
+    require_once "./php/main.php";
     ?>
     <div class="columns">
         <div class="column is-one-third">
             <h2 class="title has-text-centered">Categorías</h2>
             <?php
-                $clases=conexion();
-                $clases=$clases->query("SELECT * FROM clases");
-                if($clases->rowCount()>0){
-                    $clases=$clases->fetchAll();
-                    foreach($clases as $row){
-                        echo '<a href="index.php?vista=user_class_category&category_id='.$row['clase_id'].'" class="button is-link is-inverted is-fullwidth">'.$row['clase_nombre'].'</a>';
-                    }
-                }else{
-                    echo '<p class="has-text-centered" >No hay categorías registradas</p>';
+            $clases = conexion();
+            $clases = $clases->query("SELECT * FROM clases");
+            if ($clases->rowCount() > 0) {
+                $clases = $clases->fetchAll();
+                foreach ($clases as $row) {
+                    echo '<a href="index.php?vista=user_class_category&category_id=' . $row['clase_id'] . '" class="button is-link is-inverted is-fullwidth">' . $row['clase_nombre'] . '</a>';
                 }
-                $clases=null;
+            } else {
+                echo '<p class="has-text-centered" >No hay categorías registradas</p>';
+            }
+            $clases = null;
             ?>
         </div>
         <div class="column">
             <?php
-                $clase_id = (isset($_GET['category_id'])) ? $_GET['category_id'] : 0;
+            $clase_id = (isset($_GET['category_id'])) ? $_GET['category_id'] : 0;
 
-                /*== Verificando clases ==*/
-                $check_clases=conexion();
-                $check_clases=$check_clases->query("SELECT * FROM clases WHERE clase_id='$clase_id'");
+            $check_clases = conexion();
+            $check_clases = $check_clases->query("SELECT * FROM clases WHERE clase_id='$clase_id'");
 
-                if($check_clases->rowCount()>0){
+            if ($check_clases->rowCount() > 0) {
 
-                    $check_clases=$check_clases->fetch();
+                $check_clases = $check_clases->fetch();
 
-                    echo '
-                        <h2 class="title has-text-centered">'.$check_clases['clase_nombre'].'</h2>
-                        <p class="has-text-centered pb-6" >'.$check_clases['clase_ubicacion'].'</p>
+                echo '
+                        <h2 class="title has-text-centered">' . $check_clases['clase_nombre'] . '</h2>
+                        <p class="has-text-centered pb-6" >' . $check_clases['clase_ubicacion'] . '</p>
                     ';
 
-                    require_once "./php/main.php";
+                require_once "./php/main.php";
 
-                    # Eliminar producto #
-                    if(isset($_GET['product_id_del'])){
-                        require_once "./php/asistencia_eliminar.php";
-                    }
-
-                    if(!isset($_GET['page'])){
-                        $pagina=1;
-                    }else{
-                        $pagina=(int) $_GET['page'];
-                        if($pagina<=1){
-                            $pagina=1;
-                        }
-                    }
-
-                    $pagina=limpiar_cadena($pagina);
-                    $url="index.php?vista=attendance_class_category&category_id=$clase_id&page="; /* <== */
-                    $registros=15;
-                    $busqueda="";
-
-                    # Paginador producto #
-                    require_once "./php/asistencia_lista.php";
-
-                }else{
-                    echo '<h2 class="has-text-centered title" >Seleccione una categoría para empezar</h2>';
+                if (isset($_GET['product_id_del'])) {
+                    require_once "./php/usuario_clase_eliminar.php";
                 }
-                $check_clases=null;
+
+                if (!isset($_GET['page'])) {
+                    $pagina = 1;
+                } else {
+                    $pagina = (int) $_GET['page'];
+                    if ($pagina <= 1) {
+                        $pagina = 1;
+                    }
+                }
+
+                $pagina = limpiar_cadena($pagina);
+                $url = "index.php?vista=user_class_category&category_id=$clase_id&page="; /* <== */
+                $registros = 15;
+                $busqueda = "";
+
+                require_once "./php/usuario_clase_lista.php";
+            } else {
+                echo '<h2 class="has-text-centered title" >Seleccione una categoría para empezar</h2>';
+            }
+            $check_clases = null;
             ?>
         </div>
     </div>

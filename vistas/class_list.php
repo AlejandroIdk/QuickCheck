@@ -5,26 +5,26 @@
 
 <div class="container pb-6 pt-6">
     <?php
-        require_once "./php/main.php";
+    require_once "./php/main.php";
 
-        if(isset($_GET['clase_id_del'])){
-            require_once "./php/clase_eliminar.php";
+    if (isset($_GET['clase_id_del'])) {
+        require_once "./php/clase_eliminar.php";
+    }
+
+    if (!isset($_GET['page'])) {
+        $pagina = 1;
+    } else {
+        $pagina = (int) $_GET['page'];
+        if ($pagina <= 1) {
+            $pagina = 1;
         }
+    }
 
-        if(!isset($_GET['page'])){
-            $pagina=1;
-        }else{
-            $pagina=(int) $_GET['page'];
-            if($pagina<=1){
-                $pagina=1;
-            }
-        }
+    $pagina = limpiar_cadena($pagina);
+    $url = "index.php?vista=class_list&page=";
+    $registros = 15;
+    $busqueda = "";
 
-        $pagina=limpiar_cadena($pagina);
-        $url="index.php?vista=class_list&page=";
-        $registros=15;
-        $busqueda="";
-
-        require_once "./php/clase_lista.php";
+    require_once "./php/clase_lista.php";
     ?>
 </div>

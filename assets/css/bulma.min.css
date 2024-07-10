@@ -310,7 +310,7 @@ fieldset[disabled] .textarea {
     background: 0 0;
     border: none;
     color: currentColor;
-    font-family: inherit;
+    font-family: cursive;
     font-size: 1em;
     margin: 0;
     padding: 0
@@ -372,7 +372,7 @@ html {
 *,
 ::after,
 ::before {
-    box-sizing: inherit
+    box-sizing: cursive
 }
 
 img,
@@ -397,7 +397,7 @@ th {
 
 td:not([align]),
 th:not([align]) {
-    text-align: inherit
+    text-align: cursive
 }
 
 html {
@@ -492,8 +492,8 @@ small {
 }
 
 span {
-    font-style: inherit;
-    font-weight: inherit
+    font-style: cursive;
+    font-weight: cursive
 }
 
 strong {
@@ -530,7 +530,7 @@ table th {
 
 table td:not([align]),
 table th:not([align]) {
-    text-align: inherit
+    text-align: cursive
 }
 
 table th {
@@ -591,7 +591,7 @@ a.box:active {
 }
 
 .button strong {
-    color: inherit
+    color: cursive
 }
 
 .button .icon,
@@ -2396,7 +2396,7 @@ fieldset[disabled] .button {
 }
 
 .content table th:not([align]) {
-    text-align: inherit
+    text-align: cursive
 }
 
 .content table thead td,
@@ -2461,7 +2461,7 @@ fieldset[disabled] .button {
 
 .icon-text {
     align-items: flex-start;
-    color: inherit;
+    color: cursive;
     display: inline-flex;
     flex-wrap: wrap;
     line-height: 1.5rem;
@@ -3114,7 +3114,7 @@ div.icon-text {
 }
 
 .table th:not([align]) {
-    text-align: inherit
+    text-align: cursive
 }
 
 .table tr.is-selected {
@@ -3453,7 +3453,7 @@ a.tag:hover {
 .subtitle span,
 .title em,
 .title span {
-    font-weight: inherit
+    font-weight: cursive
 }
 
 .subtitle sub,
@@ -3479,8 +3479,8 @@ a.tag:hover {
 }
 
 .title strong {
-    color: inherit;
-    font-weight: inherit
+    color: cursive;
+    font-weight: cursive
 }
 
 .title:not(.is-spaced)+.subtitle {
@@ -4710,7 +4710,7 @@ fieldset[disabled] .select select:hover {
     display: block;
     max-width: 16em;
     overflow: hidden;
-    text-align: inherit;
+    text-align: cursive;
     text-overflow: ellipsis
 }
 
@@ -4938,7 +4938,7 @@ print {
 }
 
 .field-label .label {
-    font-size: inherit
+    font-size: cursive
 }
 
 @media screen and (max-width:768px) {
@@ -5012,7 +5012,7 @@ print {
     clear: both;
     font-size: 1rem;
     position: relative;
-    text-align: inherit
+    text-align: cursive
 }
 
 .control.has-icons-left .input:focus~.icon,
@@ -5232,7 +5232,7 @@ print {
     background: 0 0;
     border: none;
     color: currentColor;
-    font-family: inherit;
+    font-family: cursive;
     font-size: 1em;
     margin: 0;
     padding: 0;
@@ -5341,7 +5341,7 @@ print {
 a.dropdown-item,
 button.dropdown-item {
     padding-right: 3rem;
-    text-align: inherit;
+    text-align: cursive;
     white-space: nowrap;
     width: 100%
 }
@@ -5487,7 +5487,7 @@ print {
 .media {
     align-items: flex-start;
     display: flex;
-    text-align: inherit
+    text-align: cursive
 }
 
 .media .content:not(:last-child) {
@@ -5543,7 +5543,7 @@ print {
     flex-basis: auto;
     flex-grow: 1;
     flex-shrink: 1;
-    text-align: inherit
+    text-align: cursive
 }
 
 @media screen and (max-width:768px) {
@@ -7587,8 +7587,8 @@ label.panel-block:hover {
 }
 
 .panel-icon .fa {
-    font-size: inherit;
-    line-height: inherit
+    font-size: cursive;
+    line-height: cursive
 }
 
 .tabs {
@@ -12040,7 +12040,7 @@ print {
 
 .hero.is-white a:not(.button):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
 .hero.is-white strong {
-    color: inherit
+    color: cursive
 }
 
 .hero.is-white .title {
@@ -12125,7 +12125,7 @@ print {
 
 .hero.is-black a:not(.button):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
 .hero.is-black strong {
-    color: inherit
+    color: cursive
 }
 
 .hero.is-black .title {
@@ -12210,7 +12210,7 @@ print {
 
 .hero.is-light a:not(.button):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
 .hero.is-light strong {
-    color: inherit
+    color: cursive
 }
 
 .hero.is-light .title {
@@ -12295,7 +12295,7 @@ print {
 
 .hero.is-dark a:not(.button):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
 .hero.is-dark strong {
-    color: inherit
+    color: cursive
 }
 
 .hero.is-dark .title {
@@ -12380,7 +12380,7 @@ print {
 
 .hero.is-primary a:not(.button):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
 .hero.is-primary strong {
-    color: inherit
+    color: cursive
 }
 
 .hero.is-primary .title {
@@ -12465,7 +12465,7 @@ print {
 
 .hero.is-link a:not(.button):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
 .hero.is-link strong {
-    color: inherit
+    color: cursive
 }
 
 .hero.is-link .title {
@@ -12550,7 +12550,7 @@ print {
 
 .hero.is-info a:not(.button):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
 .hero.is-info strong {
-    color: inherit
+    color: cursive
 }
 
 .hero.is-info .title {
@@ -12635,7 +12635,7 @@ print {
 
 .hero.is-success a:not(.button):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
 .hero.is-success strong {
-    color: inherit
+    color: cursive
 }
 
 .hero.is-success .title {
@@ -12720,7 +12720,7 @@ print {
 
 .hero.is-warning a:not(.button):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
 .hero.is-warning strong {
-    color: inherit
+    color: cursive
 }
 
 .hero.is-warning .title {
@@ -12805,7 +12805,7 @@ print {
 
 .hero.is-danger a:not(.button):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
 .hero.is-danger strong {
-    color: inherit
+    color: cursive
 }
 
 .hero.is-danger .title {

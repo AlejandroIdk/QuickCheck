@@ -47,4 +47,3 @@ if ($update_rol->rowCount() > 0) {
               No se pudo actualizar el rol, por favor intente nuevamente
           </div>';
 }
-?>

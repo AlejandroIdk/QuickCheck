@@ -15,7 +15,7 @@ if ($total_usuarios > 0) {
         </div>
     ';
 } else {
-    
+
     $eliminar_rol = conexion();
     $eliminar_rol = $eliminar_rol->prepare("DELETE FROM roles WHERE rol_code=:code");
     $eliminar_rol->execute([":code" => $rol_code_del]);
