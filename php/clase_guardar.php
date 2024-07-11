@@ -4,13 +4,29 @@ require_once "main.php";
 $nombre = limpiar_cadena($_POST['clase_nombre']);
 $ubicacion = limpiar_cadena($_POST['clase_ubicacion']);
 
-if ($nombre == "") {
+$campo = '';
+
+// Determinar cuál campo está vacío o no válido y establecer el valor de $campo
+switch (true) {
+    case ($nombre == ""):
+        $campo = 'Nombre clase';
+        break;
+    case ($ubicacion == ""):
+        $campo = 'Salón';
+        break;
+
+    default:
+        break;
+}
+
+// Si se determina que hay un campo vacío o no válido, mostrar el mensaje de error correspondiente
+if ($campo != '') {
     echo '
-            <div class="notification is-danger is-light">
-                <strong>¡Ocurrio un error inesperado!</strong><br>
-                No has llenado todos los campos que son obligatorios
-            </div>
-        ';
+        <div class="notification is-danger is-light">
+            <strong>¡Ocurrió un error inesperado!</strong><br>
+            No has llenado el campo de ' . $campo . ' que es obligatorio
+        </div>
+    ';
     exit();
 }
 
@@ -18,7 +34,7 @@ if (verificar_datos("[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{4,50}", $nombre)) {
     echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrio un error inesperado!</strong><br>
-                El NOMBRE no coincide con el formato solicitado
+                La CLASE no coincide con el formato solicitado
             </div>
         ';
     exit();
@@ -29,7 +45,7 @@ if ($ubicacion != "") {
         echo '
 	            <div class="notification is-danger is-light">
 	                <strong>¡Ocurrio un error inesperado!</strong><br>
-	                El salón no coincide con el formato solicitado
+	                El SALÓN no coincide con el formato solicitado
 	            </div>
 	        ';
         exit();
@@ -42,7 +58,7 @@ if ($check_nombre->rowCount() > 0) {
     echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrio un error inesperado!</strong><br>
-                El NOMBRE ingresado ya se encuentra registrado, por favor elija otro
+                La CLASE ingresado ya se encuentra registrado, por favor elija otro
             </div>
         ';
     exit();
@@ -62,7 +78,7 @@ $guardar_clases->execute($marcadores);
 if ($guardar_clases->rowCount() == 1) {
     echo '
             <div class="notification is-info is-light">
-                <strong>¡clases REGISTRADA!</strong><br>
+                <strong>¡CLASE REGISTRADA!</strong><br>
                 La clase se registro con exito
             </div>
         ';

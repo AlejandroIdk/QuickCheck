@@ -1,4 +1,4 @@
-<footer class="footer mt-auto py-3" style="background-color: rgba(148, 212, 233, 0.748);">
+<footer class="footer mt-auto py-3" style="background-color: rgb(39 136 169);">
     <div class="container">
         <div class="content has-text-centered">
             <p>Copyright © Fulboooooooooo</p>

@@ -36,7 +36,6 @@ $tabla .= '
                 <thead>
                     <tr class="has-text-centered">
                         <th>#</th>
-                        <th>Código Rol</th>
                         <th>Roles</th>
                         <th colspan="2">Opciones</th>
                     </tr>
@@ -51,7 +50,6 @@ if ($total >= 1 && $pagina <= $Npaginas) {
         $tabla .= '
                 <tr class="has-text-centered">
                     <td>' . $contador . '</td>
-                    <td>' . $rows['rol_code'] . '</td>
                     <td>' . $rows['rol_nombre'] . '</td>
                     <td>
                         <a href="index.php?vista=rol_update&rol_code_up=' . $rows['rol_code'] . '" class="button is-success is-rounded is-small">Actualizar</a>

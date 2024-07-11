@@ -12,40 +12,80 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $clave_2 = limpiar_cadena($_POST['usuario_clave_2'] ?? '');
     $email = limpiar_cadena($_POST['usuario_email'] ?? '');
 
-    if ($rol == "" || $nombre == ""  || $apellido == "" || $identificacion == "" || $clave_1 == "" || $clave_2 == "" || $email == "") {
+    $campo = '';
+
+    // Determinar cuál campo está vacío o no válido y establecer el valor de $campo
+    switch (true) {
+        case ($rol == ""):
+            $campo = 'Rol';
+            break;
+        case ($nombre == ""):
+            $campo = 'Nombre';
+            break;
+        case ($apellido == ""):
+            $campo = 'Apellido';
+            break;
+        case ($identificacion == ""):
+            $campo = 'Identificacion';
+            break;
+        case ($email == ""):
+            $campo = 'Email';
+            break;
+        case ($clave_1 == "" || $clave_2 == ""):
+            $campo = 'Claves';
+            break;
+        default:
+            break;
+    }
+    
+    // Si se determina que hay un campo vacío o no válido, mostrar el mensaje de error correspondiente
+    if ($campo != '') {
         echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
-                No has llenado todos los campos que son obligatorios
+                No has llenado el campo de ' . $campo . ' que es obligatorio
             </div>
         ';
         exit();
     }
 
-    if (!is_numeric($rol)) {
+    if ($rol == "") {
+        echo '
+              <div class="notification is-danger is-light">
+                <strong>¡Ocurrio un error inesperado!</strong><br>
+                El ROL no coincide con el formato solicitado
+            </div>
+            ';
+        exit();
+    }
+
+    if(verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}",$nombre)){
         echo '
             <div class="notification is-danger is-light">
-                <strong>¡Ocurrió un error inesperado!</strong><br>
-                El ROL no coincide con el formato solicitado (debe ser numérico)
+                <strong>¡Ocurrio un error inesperado!</strong><br>
+                El NOMBRE no coincide con el formato solicitado
             </div>
         ';
         exit();
     }
 
-    if (
-        !preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}$/", $nombre) ||
-        !preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}$/", $apellido) ||
-        !preg_match("/^[0-9]{3,40}$/", $identificacion) ||
-        !preg_match("/^[a-zA-Z0-9$@.-]{7,100}$/", $clave_1) ||
-        !preg_match("/^[a-zA-Z0-9$@.-]{7,100}$/", $clave_2) ||
-        !filter_var($email, FILTER_VALIDATE_EMAIL)
-    ) {
+    if(verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}",$apellido)){
         echo '
             <div class="notification is-danger is-light">
-                <strong>¡Ocurrió un error inesperado!</strong><br>
-                Uno o más campos no coinciden con el formato solicitado
+                <strong>¡Ocurrio un error inesperado!</strong><br>
+                El APELLIDO no coincide con el formato solicitado
             </div>
         ';
+        exit();
+    }
+    
+    if ($identificacion == "{3,40}") {
+        echo '
+                <div class="notification is-danger is-light">
+                    <strong>¡Ocurrio un error inesperado!</strong><br>
+                    No has llenado todos los campos que son obligatorios
+                </div>
+            ';
         exit();
     }
 

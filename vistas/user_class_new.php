@@ -9,14 +9,14 @@
     require_once "./php/main.php";
     ?>
 
-    <div class="form-rest mb-6 mt-6"></div>
+    <div class="form-rest"></div>
 
     <form action="./php/usuario_clase_guardar.php" method="POST" class="FormularioAjax" autocomplete="off" enctype="multipart/form-data">
 
         <div class="columns">
             <div class="column">
                 <div class="form-group">
-                    <label for="usuario_identificacion">Identificación</label>
+                    <label for="usuario_identificacion">Identificación:</label><br>
                     <div class="select">
                         <select class="form-control" name="usuario_identificacion">
                             <option value="" selected>Seleccione una opción</option>
@@ -35,7 +35,7 @@
             </div>
             <div class="column">
                 <div class="form-group">
-                    <label for="clase_nombre">Nombre de la Clase</label>
+                    <label for="clase_nombre">Nombre Clase:</label><br>
                     <div class="select">
                         <select class="form-control" name="clase_nombre">
                             <option value="" selected>Seleccione una opción</option>
@@ -70,7 +70,7 @@
             </div>
         </div>
 
-        <p class="has-text-centered">
+        <p class="has-text-centered mt-2">
             <button type="submit" class="button is-info is-rounded">Guardar</button>
         </p>
 

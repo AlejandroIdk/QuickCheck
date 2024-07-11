@@ -9,14 +9,14 @@
         <?php
         require_once "./php/main.php";
         ?>
+        <div class="form-rest"></div>
 
-        <div class="form-rest mb-6 mt-6"></div>
 
         <form action="./php/usuario_guardar.php" method="POST" class="FormularioAjax" autocomplete="off" enctype="multipart/form-data">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 mt-3">
                     <div class="form-group">
-                        <label for="rol_code">Rol:</label>
+                        <label for="rol_code">Rol:</label><br>
                         <div class="select">
                             <select class="form-control" name="rol_code">
                                 <option value="" selected>Seleccione una opción</option>
@@ -36,27 +36,27 @@
             </div>
 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 mt-3">
                     <div class="form-group">
                         <label for="usuario_nombre">Nombre:</label>
-                        <input type="text" class="form-control" id="usuario_nombre" name="usuario_nombre" required pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" maxlength="40">
+                        <input type="text" class="form-control" id="usuario_nombre" name="usuario_nombre"  pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" maxlength="40">
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 mt-3">
                     <div class="form-group">
                         <label for="usuario_apellido">Apellido:</label>
-                        <input type="text" class="form-control" id="usuario_apellido" name="usuario_apellido" required pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" maxlength="40">
+                        <input type="text" class="form-control" id="usuario_apellido" name="usuario_apellido"  pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" maxlength="40" >
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 mt-3">
                     <div class="form-group">
                         <label for="usuario_identificacion">Identificación:</label>
-                        <input type="text" class="form-control" id="usuario_identificacion" name="usuario_identificacion" required pattern="{3,40}" maxlength="10">
+                        <input type="text" class="form-control" id="usuario_identificacion" name="usuario_identificacion"  pattern="{3,40}" maxlength="10" >
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 mt-3">
                     <div class="form-group">
                         <label for="usuario_email">Email:</label>
                         <input type="email" class="form-control" id="usuario_email" name="usuario_email" maxlength="70">
@@ -67,16 +67,16 @@
 
 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 mt-3">
                     <div class="form-group">
                         <label for="usuario_clave_1">Clave:</label>
-                        <input type="password" class="form-control" id="usuario_clave_1" name="usuario_clave_1" required pattern="[a-zA-Z0-9$@.-]{7,100}" maxlength="100">
+                        <input type="password" class="form-control" id="usuario_clave_1" name="usuario_clave_1"  pattern="[a-zA-Z0-9$@.-]{7,100}" maxlength="100">
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 mt-3">
                     <div class="form-group">
                         <label for="usuario_clave_2">Confirmar Clave:</label>
-                        <input type="password" class="form-control" id="usuario_clave_2" name="usuario_clave_2" required pattern="[a-zA-Z0-9$@.-]{7,100}" maxlength="100">
+                        <input type="password" class="form-control" id="usuario_clave_2" name="usuario_clave_2"  pattern="[a-zA-Z0-9$@.-]{7,100}" maxlength="100">
                     </div>
                 </div>
             </div>

@@ -4,14 +4,14 @@
 </div>
 <div class="container pb-6 pt-6">
 
-	<div class="form-rest mb-6 mt-6"></div>
+<div class="form-rest"></div>
 
 	<form action="./php/rol_guardar.php" method="POST" class="FormularioAjax" autocomplete="off">
 		<div class="columns">
 			<div class="column">
 				<div class="control">
-					<label>Nombres</label>
-					<input class="input" type="text" name="rol_nombre" pattern="{3,40}" maxlength="40" required>
+					<label>Nombre:</label>
+					<input class="input" type="text" name="rol_nombre" pattern="[a-zA-Z0-9-]{7,100}" minlength="5" maxlength="40">
 				</div>
 			</div>
 		</div>

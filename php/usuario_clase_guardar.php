@@ -6,11 +6,29 @@ $identificacion = limpiar_cadena($_POST['usuario_identificacion']);
 $clase_nombre = limpiar_cadena($_POST['clase_nombre']);
 $generated_code = $_POST['generated_code'];
 
-if ($identificacion == "" || $clase_nombre == "") {
+$campo = '';
+
+// Determinar cuál campo está vacío o no válido y establecer el valor de $campo
+switch (true) {
+    case ($identificacion == ""):
+        $campo = 'Identificación';
+        break;
+    case ($clase_nombre == ""):
+        $campo = 'Nombre Clase';
+        break;
+    case ($generated_code == ""):
+        $campo = 'Código QR';
+        break;
+    default:
+        break;
+}
+
+// Si se determina que hay un campo vacío o no válido, mostrar el mensaje de error correspondiente
+if ($campo != '') {
     echo '
         <div class="notification is-danger is-light">
             <strong>¡Ocurrió un error inesperado!</strong><br>
-            No has llenado todos los campos que son obligatorios
+            No has llenado el campo de ' . $campo . ' que es obligatorio
         </div>
     ';
     exit();
