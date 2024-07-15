@@ -3,14 +3,14 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require_once "main.php";
 
-    $rol = limpiar_cadena($_POST['rol_code'] ?? '');
-    $nombre = limpiar_cadena($_POST['usuario_nombre'] ?? '');
-    $apellido = limpiar_cadena($_POST['usuario_apellido'] ?? '');
+    $rol = limpiar_cadena($_POST['rol_code']);
+    $nombre=limpiar_cadena($_POST['usuario_nombre']);
+    $apellido=limpiar_cadena($_POST['usuario_apellido']);
 
-    $identificacion = limpiar_cadena($_POST['usuario_identificacion'] ?? '');
-    $clave_1 = limpiar_cadena($_POST['usuario_clave_1'] ?? '');
-    $clave_2 = limpiar_cadena($_POST['usuario_clave_2'] ?? '');
-    $email = limpiar_cadena($_POST['usuario_email'] ?? '');
+    $identificacion = limpiar_cadena($_POST['usuario_identificacion']);
+    $clave_1 = limpiar_cadena($_POST['usuario_clave_1']);
+    $clave_2 = limpiar_cadena($_POST['usuario_clave_2']);
+    $email = limpiar_cadena($_POST['usuario_email']);
 
     $campo = '';
 

@@ -1,11 +1,11 @@
 -- -----------------------------------------------------
--- Schema quickcheck
+-- Schema pdo
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `quickcheck` DEFAULT CHARACTER SET utf8 ;
-USE `quickcheck` ;
+CREATE DATABASE IF NOT EXISTS `pdo` DEFAULT CHARACTER SET utf8 ;
+USE `pdo` ;
 
 -- -----------------------------------------------------
--- Table `quickcheck`.`roles`
+-- Table `pdo`.`roles`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Roles` (
   `rol_code` INT NOT NULL AUTO_INCREMENT,
@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `Roles` (
 ) ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- Table `quickcheck`.`usuario`
+-- Table `pdo`.`usuario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `usuario` (
   `usuario_identificacion` INT NOT NULL,

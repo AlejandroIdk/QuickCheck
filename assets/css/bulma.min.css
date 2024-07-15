@@ -13034,6 +13034,7 @@ label,h1,h2,h5, .has-text-centered {
 }
 .input {
     background: rgba(255, 255, 255, 0.549);
+
 }
 
 h4, p {
@@ -13043,4 +13044,8 @@ h4, p {
 span {
     font-family: cursive;
     color: blue;
+}
+input, .form-control {
+    font-family: cursive;
+
 }

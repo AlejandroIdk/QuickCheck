@@ -1,6 +1,33 @@
 <?php
 $asistencia_id_del = limpiar_cadena($_GET['asistencia_id_del']);
 
+
+if (!isset($_POST['confirmar_eliminar'])) {
+
+    echo '
+        <script>
+            Swal.fire({
+                title: "¿Estás seguro?",
+                text: "Esta acción eliminará la asistencia seleccionada. ¿Deseas continuar?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Sí, eliminar",
+                cancelButtonText: "Cancelar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const form = document.createElement("form");
+                    form.method = "post";
+                    const input = document.createElement("input");
+                    input.type = "hidden";
+                    input.name = "confirmar_eliminar";
+                    form.appendChild(input);
+                    document.body.appendChild(form);
+                    form.submit();
+                }
+            });
+        </script>
+    ';
+} else {
 $check_asistencia = conexion();
 $check_asistencia = $check_asistencia->query("SELECT * FROM asistencia WHERE asistencia_id='$asistencia_id_del'");
 
@@ -17,26 +44,41 @@ if ($check_asistencia->rowCount() == 1) {
 
 
 		echo '
-	            <div class="notification is-info is-light">
-	                <strong>¡usuario_clase ELIMINADO!</strong><br>
-	                Los datos de asistencia se eliminaron con exito
-	            </div>
-	        ';
+		<script>
+			Swal.fire({
+				position: "top-end",
+				icon: "success",
+				title: "ASISTENCIA ELIMINADO!",
+				showConfirmButton: false,
+				timer: 1000
+			});
+		</script>
+	';
 	} else {
 		echo '
-	            <div class="notification is-danger is-light">
-	                <strong>¡Ocurrio un error inesperado!</strong><br>
-	                No se pudo eliminar la asistencia, por favor intente nuevamente
-	            </div>
-	        ';
+		<script>
+			Swal.fire({
+				position: "top-end",
+				icon: "error",
+				title: "¡Ocurrió un error inesperado!",
+				text: "No se pudo eliminar la asistencia, por favor intente nuevamente"
+			});
+		</script>
+	';
 	}
 	$eliminar_asistencia = null;
 } else {
-	echo '
-            <div class="notification is-danger is-light">
-                <strong>¡Ocurrio un error inesperado!</strong><br>
-                La asistencia que intenta eliminar no existe
-            </div>
+    echo '
+            <script>
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: "¡Ocurrió un error inesperado!",
+                    text: "La asistencia que intenta eliminar no existe"
+                });
+            </script>
         ';
 }
 $check_asistencia = null;
+}
+?>

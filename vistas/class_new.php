@@ -11,14 +11,14 @@
 		<div class="columns">
 			<div class="column">
 				<div class="control">
-					<label>Nombre:</label>
-					<input class="input" type="text" name="clase_nombre" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{4,50}" maxlength="150">
+					<label for="clase_nombre">Nombre:</label>
+					<input class="input" type="text" name="clase_nombre" id="clase_nombre" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{4,50}" maxlength="150">
 				</div>
 			</div>
 			<div class="column">
 				<div class="control">
 					<label>Salón:</label>
-					<input class="input" type="text" name="clase_ubicacion" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{4,50}" maxlength="150">
+					<input class="input" type="text" name="clase_ubicacion" id="clase_ubicacion" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{4,50}" maxlength="150">
 				</div>
 			</div>
 		</div>

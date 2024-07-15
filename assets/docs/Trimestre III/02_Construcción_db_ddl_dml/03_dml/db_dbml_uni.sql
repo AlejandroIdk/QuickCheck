@@ -10,25 +10,15 @@ INSERT INTO `roles` (`rol_code`, `rol_nombre`) VALUES
 -- -----------------------------------------------------
 -- INSERT INTO`.`usuario`
 -- -----------------------------------------------------
-INSERT INTO `usuario` (`usuario_identificacion`, `usuario_nombre`, `usuario_email`, `usuario_clave`, `rol_code`) VALUES
-(14564356, 'Administrador', 'Principal@gmail.com', '$2y$10$jMaEKZ/GVxyzDmYD/hOYfu7AxyOP0kg0zcPn66BP7dB2OWMXgNuUa', 1),
-(123464575, 'Tatiana', 'Tatiana@gmail.com', '$2y$10$EPY9LSLOFLDDBriuJICmFOqmZdnDXxLJG8YFbog5LcExp77DBQvgC', 2),
-(235346568, 'Sofia', 'sofia@gmail.com', '$2y$10$EPY9LSLOFLDDBriuJICmFOqmZdnDXxLJG8YFbog5LcExp77DBQvgC', 2),
-(264366798, 'Steven', 'steven@gmail.com', '$2y$10$EPY9LSLOFLDDBriuJICmFOqmZdnDXxLJG8YFbog5LcExp77DBQvgC', 2),
-(328743223, 'Alejandro', 'alejandro@gmail.com', '$2y$10$vXnmDev6djHCIvHqAoVSzOALOoAS4Qq1b7E44eHXFZKriiTjnBDYe', 2),
-(345654765, 'Marcos', 'marcos@gmail.com', '$2y$10$EPY9LSLOFLDDBriuJICmFOqmZdnDXxLJG8YFbog5LcExp77DBQvgC', 2),
-(457688799, 'Nicolas', 'nicolas@gmail.com', '$2y$10$EPY9LSLOFLDDBriuJICmFOqmZdnDXxLJG8YFbog5LcExp77DBQvgC', 2),
-(546346657, 'Jefferson', 'a@gmail.com', '$2y$10$/lskLbGuf.hDbnqn1IxhKuTJg51EQJIDjsgFOaEsRmW/4uzxQ/9li', 2),
-(567568895, 'David', 'david@gmail.com', '$2y$10$EPY9LSLOFLDDBriuJICmFOqmZdnDXxLJG8YFbog5LcExp77DBQvgC', 2),
-(654632465, 'Jose', 'jose@gmail.com', '$2y$10$EPY9LSLOFLDDBriuJICmFOqmZdnDXxLJG8YFbog5LcExp77DBQvgC', 2),
-(657345686, 'Lucho', 'lucho@gmail.com', '$2y$10$EPY9LSLOFLDDBriuJICmFOqmZdnDXxLJG8YFbog5LcExp77DBQvgC', 2),
-(768345645, 'Johan', 'johan@gmail.com', '$2y$10$EPY9LSLOFLDDBriuJICmFOqmZdnDXxLJG8YFbog5LcExp77DBQvgC', 2),
-(796765334, 'Dayanna', 'dayanna@gmail.com', '$2y$10$EPY9LSLOFLDDBriuJICmFOqmZdnDXxLJG8YFbog5LcExp77DBQvgC', 2),
-(879435645, 'Ivan', 'ivan@gmail.com', '$2y$10$EPY9LSLOFLDDBriuJICmFOqmZdnDXxLJG8YFbog5LcExp77DBQvgC', 2),
-(954744523, 'Katerin', 'katerin@gmail.com', '$2y$10$D2SCJxYKTOFGpu6tFJ/lRuaRdbvsTMyuZuGbOW.0.7QGzY1qEXwbO', 2),
-(980866575, 'Franck', 'Franck@gmail.com', '$2y$10$EPY9LSLOFLDDBriuJICmFOqmZdnDXxLJG8YFbog5LcExp77DBQvgC', 2),
-(987345743, 'Marcos', 'marcos@gmail.com', '$2y$10$EPY9LSLOFLDDBriuJICmFOqmZdnDXxLJG8YFbog5LcExp77DBQvgC', 2),
-(2147483647, 'Elias', 'elias@gmail.com', '$2y$10$Cj2Xti4kGh3vUoyvLhpkL.e/miDmelMgmevfIRmDUjXP9HQNWzPju', 2);
+INSERT INTO `usuario` (`usuario_identificacion`, `usuario_nombre`, `usuario_apellido`, `usuario_email`, `usuario_clave`, `rol_code`) VALUES
+(234231412, 'Luis', 'Lopez', 'Luis@gmail.com', '$2y$10$.EzQxqIgHbJbPIDGAt9oferePsNfJL29vvU8nq8W0UBme5Ju8gNPi', 3),
+(345456576, 'Falcao', 'Junior', 'Falcao@gmail.com', '$2y$10$lKeQi7T3AB11j6CcD7VaQ.hFqqr4HeivtrwRNoD2V0v/.a9ppfM7O', 3),
+(347686773, 'Johan', 'Naranjo', 'Johan@gmail.com', '$2y$10$IR/FKrEBYQwEnRR4QZ3md.c5UO73tEKtXJoLLR4wxgbgoMiV8kBFu', 3),
+(453745673, 'Diego', 'Mesa', 'Diego@gmail.com', '$2y$10$nxxysB7.FxPhYYGufnowpe/JIAaLHYNfjd84uggMSHwRuZcpcokj2', 3),
+(456785967, 'Elias', 'Ramirez', 'Elias@gmail.com', '$2y$10$Rb0r/.awlKsrVBJqL/6RTe6UNfa5E6JQWfchPfUFVv76.s8UQVflK', 3),
+(457638925, 'James', 'Rodriguez', 'James@gmail.com', '$2y$10$J6tuwboYmdm8h5112QdcfONexB4gaMU6ZZugK3S2YcB4nguoxLnJq', 2),
+(546346657, 'Alejandro', 'Ortiz', 'a@gmail.com', '$2y$10$zQqBUFisfgYV91mXMwa0UeT5aawNBAGZIwHuIZkRXhkBB/oLbfJlO', 1),
+(568769678, 'Hector', 'Ortiz', 'Hector@gmail.com', '$2y$10$jR8l7U5bACGP4xo.z2Hb8eob/KIeWap3D3HPSoCBb0wqUW.4lrIZu', 3);
 
 -- -----------------------------------------------------
 -- INSERT INTO`.`clases`

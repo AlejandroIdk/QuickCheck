@@ -35,5 +35,6 @@ if (isset($_SESSION['id']) && !empty($_SESSION['id']) && isset($_SESSION['usuari
     <footer>
         <?php include "./inc/footer.php"; ?>
     </footer>
+    <script src="./js/mayusculas.js"></script>
 </body>
 </html>

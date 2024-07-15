@@ -7,7 +7,7 @@ if ($rol == "") {
     echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrio un error inesperado!</strong><br>
-                No has llenado todos los campos que son obligatorios
+                No has llenado el campo Nombre que es obligatorio
             </div>
         ';
     exit();

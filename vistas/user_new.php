@@ -53,7 +53,7 @@
                 <div class="col-md-6 mt-3">
                     <div class="form-group">
                         <label for="usuario_identificacion">Identificación:</label>
-                        <input type="text" class="form-control" id="usuario_identificacion" name="usuario_identificacion"  pattern="{3,40}" maxlength="10" >
+                        <input type="text" class="form-control" id="usuario_identificacion" name="usuario_identificacion"  pattern="[0-9]{3,40}" maxlength="10" >
                     </div>
                 </div>
                 <div class="col-md-6 mt-3">

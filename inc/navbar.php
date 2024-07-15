@@ -58,22 +58,20 @@
                     <a href="index.php?vista=attendance_list" class="navbar-item">Lista</a>
                     <a href="index.php?vista=attendance_class_category" class="navbar-item">Por categoría</a>
                     <a href="index.php?vista=attendance_search" class="navbar-item">Buscar</a>
-
                 </div>
             </div>
-
-            <!-- PARA QUE FUNCIONE EL BUSCADOR DEBO ELIMINAR EL SEARCH DE ASISTENCIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -->
-            
         </div>
 
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
+                    <!-- Botón de Actualizar -->
                     <a href="index.php?vista=user_update&user_id_up=<?php echo $_SESSION['id']; ?>" class="button is-primary is-rounded">
-                        Mi cuenta
+                        Actualizar
                     </a>
 
-                    <a href="index.php?vista=logout" class="button is-link is-rounded">
+                    <!-- Botón de Salir con SweetAlert -->
+                    <a href="index.php?vista=logout" class="button is-link is-rounded" id="btn-logout">
                         Salir
                     </a>
                 </div>
@@ -81,3 +79,34 @@
         </div>
     </div>
 </nav>
+
+<!-- Script para SweetAlert -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Obtener el enlace de "Salir"
+    const logoutLink = document.getElementById('btn-logout');
+
+    // Agregar un event listener para el clic
+    logoutLink.addEventListener('click', function(event) {
+        // Prevenir el comportamiento predeterminado del enlace
+        event.preventDefault();
+
+        // Mostrar el alert de SweetAlert
+        Swal.fire({
+            title: '¿Estás seguro que deseas salir?',
+            text: '¡Hasta luego!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, Salir',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Si el usuario confirma, redirigir al enlace de salida
+                window.location.href = logoutLink.getAttribute('href');
+            }
+        });
+    });
+});
+</script>
