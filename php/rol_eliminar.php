@@ -41,7 +41,11 @@ if (!isset($_POST['confirmar_eliminar'])) {
                     position: "top-end",
                     icon: "error",
                     title: "¡Ups, algo salió mal!",
-                    text: "No se puede eliminar el rol porque tiene usuarios registrados"
+                    text: "No se puede eliminar el rol porque tiene usuarios registrados",
+                    toast: true,
+                    showConfirmButton: false,
+                    timer: 2500,
+                    timerProgressBar: true
                 });
             </script>
         ';
@@ -60,7 +64,10 @@ if (!isset($_POST['confirmar_eliminar'])) {
                         icon: "success",
                         title: "¡ROL ELIMINADO!",
                         showConfirmButton: false,
-                        timer: 900
+                        toast: true,
+                        showConfirmButton: false,
+                        timer: 1000,
+                        timerProgressBar: true
                     });
                 </script>
             ';
@@ -73,6 +80,10 @@ if (!isset($_POST['confirmar_eliminar'])) {
                         icon: "error",
                         title: "¡Ocurrió un error inesperado!",
                         text: "No se pudo eliminar el rol, por favor intente nuevamente"
+                        toast: true,
+                        showConfirmButton: false,
+                        timer: 2300,
+                        timerProgressBar: true
                     });
                 </script>
             ';
