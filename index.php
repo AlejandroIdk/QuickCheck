@@ -42,7 +42,9 @@
         }
     ?>
     <footer>
+        <script src="./js/mayusculas.js"></script>
         <?php include "./inc/footer.php"; ?>
+
     </footer>
 </body>
 </html>

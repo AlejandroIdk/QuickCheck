@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    if (verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]", $nombre)) {
+    if (verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{4,50}", $nombre)) {
         echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrio un error inesperado!</strong><br>
@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    if (verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]", $apellido)) {
+    if (verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{4,50}", $apellido)) {
         echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrio un error inesperado!</strong><br>

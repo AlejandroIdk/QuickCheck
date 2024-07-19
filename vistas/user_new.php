@@ -39,13 +39,13 @@
                 <div class="col-md-6 mt-3">
                     <div class="form-group">
                         <label for="usuario_nombre">Nombre:</label>
-                        <input type="text" class="form-control" id="usuario_nombre" name="usuario_nombre"  pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ" minlength="3" maxlength="40">
+                        <input type="text" class="form-control" id="usuario_nombre" name="usuario_nombre"  pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{4,50}" minlength="3" maxlength="40">
                     </div>
                 </div>
                 <div class="col-md-6 mt-3">
                     <div class="form-group">
                         <label for="usuario_apellido">Apellido:</label>
-                        <input type="text" class="form-control" id="usuario_apellido" name="usuario_apellido"  pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ"minlength="3" maxlength="40" >
+                        <input type="text" class="form-control" id="usuario_apellido" name="usuario_apellido"  pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{4,50}"minlength="3" maxlength="40" >
                     </div>
                 </div>
             </div>
