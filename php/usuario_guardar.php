@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    if (verificar_datos("[0-9]", $identificacion)) {
+    if (verificar_datos("^[0-9]+", $identificacion)) {
         echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrio un error inesperado!</strong><br>
