@@ -39,13 +39,13 @@
                 <div class="col-md-6 mt-3">
                     <div class="form-group">
                         <label for="usuario_nombre">Nombre:</label>
-                        <input type="text" class="form-control" id="usuario_nombre" name="usuario_nombre"  pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" maxlength="40">
+                        <input type="text" class="form-control" id="usuario_nombre" name="usuario_nombre"  pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ" minlength="3" maxlength="40">
                     </div>
                 </div>
                 <div class="col-md-6 mt-3">
                     <div class="form-group">
                         <label for="usuario_apellido">Apellido:</label>
-                        <input type="text" class="form-control" id="usuario_apellido" name="usuario_apellido"  pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" maxlength="40" >
+                        <input type="text" class="form-control" id="usuario_apellido" name="usuario_apellido"  pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ"minlength="3" maxlength="40" >
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@
                 <div class="col-md-6 mt-3">
                     <div class="form-group">
                         <label for="usuario_identificacion">Identificación:</label>
-                        <input type="text" class="form-control" id="usuario_identificacion" name="usuario_identificacion"  pattern="[0-9]{3,40}" maxlength="10" >
+                        <input type="text" class="form-control" id="usuario_identificacion" name="usuario_identificacion"  pattern="[0-9]" maxlength="10" >
                     </div>
                 </div>
                 <div class="col-md-6 mt-3">
@@ -87,3 +87,4 @@
         </form>
 
     </div>
+     

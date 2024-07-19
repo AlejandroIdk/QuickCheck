@@ -3,102 +3,97 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require_once "main.php";
 
-    $rol = limpiar_cadena($_POST['rol_code']);
-    $nombre=limpiar_cadena($_POST['usuario_nombre']);
-    $apellido=limpiar_cadena($_POST['usuario_apellido']);
+    $rol = limpiar_cadena($_POST['rol_code'] ?? '');
+    $nombre = limpiar_cadena($_POST['usuario_nombre'] ?? '');
+    $apellido = limpiar_cadena($_POST['usuario_apellido'] ?? '');
 
-    $identificacion = limpiar_cadena($_POST['usuario_identificacion']);
-    $clave_1 = limpiar_cadena($_POST['usuario_clave_1']);
-    $clave_2 = limpiar_cadena($_POST['usuario_clave_2']);
-    $email = limpiar_cadena($_POST['usuario_email']);
+    $identificacion = limpiar_cadena($_POST['usuario_identificacion'] ?? '');
+    $clave_1 = limpiar_cadena($_POST['usuario_clave_1'] ?? '');
+    $clave_2 = limpiar_cadena($_POST['usuario_clave_2'] ?? '');
+    $email = limpiar_cadena($_POST['usuario_email'] ?? '');
 
     $campo = '';
-
-    // Determinar cuál campo está vacío o no válido y establecer el valor de $campo
     switch (true) {
-        case ($rol == ""):
-            $campo = 'Rol';
+        case ($rol ==  ""):
+            $campo = "Rol";
             break;
         case ($nombre == ""):
-            $campo = 'Nombre';
+            $nombre = "Nombre";
             break;
         case ($apellido == ""):
-            $campo = 'Apellido';
+            $apellido = "Apellido";
             break;
         case ($identificacion == ""):
-            $campo = 'Identificacion';
+            $identificacion = "Identificacion";
             break;
         case ($email == ""):
-            $campo = 'Email';
-            break;
-        case ($clave_1 == "" || $clave_2 == ""):
-            $campo = 'Claves';
-            break;
-        default:
+            $email = "Email";
             break;
     }
-    
-    // Si se determina que hay un campo vacío o no válido, mostrar el mensaje de error correspondiente
+
     if ($campo != '') {
         echo '
             <div class="notification is-danger is-light">
-                <strong>¡Ocurrió un error inesperado!</strong><br>
+                <strong> ¡Ocurrió un error inesperado!</strong><br>
                 No has llenado el campo de ' . $campo . ' que es obligatorio
             </div>
         ';
         exit();
     }
 
-    if ($rol == "") {
-        echo '
-              <div class="notification is-danger is-light">
-                <strong>¡Ocurrio un error inesperado!</strong><br>
-                El ROL no coincide con el formato solicitado
-            </div>
-            ';
-        exit();
-    }
-
-    if(verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}",$nombre)){
+    if (verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]", $nombre)) {
         echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrio un error inesperado!</strong><br>
-                El NOMBRE no coincide con el formato solicitado
+                El Nombre no coincide con el formato solicitado
             </div>
         ';
         exit();
     }
 
-    if(verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}",$apellido)){
+    if (verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]", $apellido)) {
         echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrio un error inesperado!</strong><br>
-                El APELLIDO no coincide con el formato solicitado
+                El Apellido no coincide con el formato solicitado
             </div>
         ';
         exit();
     }
-    
-    if ($identificacion == "{3,40}") {
+
+    if (verificar_datos("[0-9]", $identificacion)) {
         echo '
+            <div class="notification is-danger is-light">
+                <strong>¡Ocurrio un error inesperado!</strong><br>
+                El Nombre no coincide con el formato solicitado
+            </div>
+        ';
+        exit();
+    }
+
+    if ($email != "") {
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $check_email = conexion();
+            $check_email = $check_email->query("SELECT usuario_email FROM usuario WHERE usuario_email='$email'");
+            if ($check_email->rowCount() > 0) {
+                echo '
+                    <div class="notification is-danger is-light">
+                        <strong>¡Ocurrio un error inesperado!</strong><br>
+                        El correo electrónico ingresado ya se encuentra registrado, por favor elija otro
+                    </div>
+                ';
+                exit();
+            }
+            $check_email = null;
+        } else {
+            echo '
                 <div class="notification is-danger is-light">
                     <strong>¡Ocurrio un error inesperado!</strong><br>
-                    No has llenado todos los campos que son obligatorios
+                    Ha ingresado un correo electrónico no valido
                 </div>
             ';
-        exit();
-    }
-
-    $check_email = conexion()->prepare("SELECT usuario_email FROM usuario WHERE usuario_email=:email");
-    $check_email->execute([':email' => $email]);
-    if ($check_email->rowCount() > 0) {
-        echo '
-            <div class="notification is-danger is-light">
-                <strong>¡Ocurrió un error inesperado!</strong><br>
-                El correo electrónico ingresado ya se encuentra registrado, por favor elija otro
-            </div>
-        ';
-        exit();
+            exit();
+        }
     }
 
     $check_identificacion = conexion()->prepare("SELECT usuario_identificacion FROM usuario WHERE usuario_identificacion=:identificacion");

@@ -11,7 +11,7 @@
 			<div class="column">
 				<div class="control">
 					<label for="rol_nombre">Nombre:</label>
-					<input class="input" type="text" name="rol_nombre" id="rol_nombre" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" minlength="5" maxlength="40">
+					<input class="input" type="text" name="rol_nombre" id="rol_nombre" pattern="[a-z0-9A-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" minlength="5" maxlength="40">
 				</div>
 			</div>
 		</div>

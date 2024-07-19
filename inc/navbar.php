@@ -55,6 +55,8 @@
                 <a class="navbar-link">Asistencia</a>
                 <div class="navbar-dropdown">
                     <a href="index.php?vista=scanner_user" class="navbar-item">Scannear</a>
+                    <a href="index.php?vista=attendance_manual" class="navbar-item">Asistencia manual</a>
+
                     <a href="index.php?vista=attendance_list" class="navbar-item">Lista</a>
                     <a href="index.php?vista=attendance_class_category" class="navbar-item">Por categoría</a>
                     <a href="index.php?vista=attendance_search" class="navbar-item">Buscar</a>

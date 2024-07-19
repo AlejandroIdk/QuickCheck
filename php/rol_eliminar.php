@@ -60,7 +60,7 @@ if (!isset($_POST['confirmar_eliminar'])) {
                         icon: "success",
                         title: "¡ROL ELIMINADO!",
                         showConfirmButton: false,
-                        timer: 1000
+                        timer: 900
                     });
                 </script>
             ';

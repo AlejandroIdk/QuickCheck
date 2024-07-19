@@ -65,6 +65,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 // -----------------------------LETRAS, NÚMEROS Y CARACTERES ESPECIALES EN MAYUCULA-------------------------------------------------
+
 document.addEventListener("DOMContentLoaded", function() {
     // Obtener referencias a los campos de nombre y apellido
     let rolNombreInput = document.getElementById("rol_nombre");
