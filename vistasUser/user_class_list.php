@@ -5,24 +5,28 @@
 
 <div class="container pb-6 pt-6">
     <?php
-        require_once "./php/main.php";
+    require_once "./php/main.php";
 
-        if(!isset($_GET['page'])){
-            $pagina=1;
-        }else{
-            $pagina=(int) $_GET['page'];
-            if($pagina<=1){
-                $pagina=1;
-            }
+    if (isset($_GET['userclass_id_del'])) {
+        require_once "./php/usuario_clase_eliminar.php";
+    }
+
+    if (!isset($_GET['page'])) {
+        $pagina = 1;
+    } else {
+        $pagina = (int) $_GET['page'];
+        if ($pagina <= 1) {
+            $pagina = 1;
         }
+    }
 
-        $clase_id = (isset($_GET['category_id'])) ? $_GET['category_id'] : 0;
+    $clase_id = (isset($_GET['category_id'])) ? $_GET['category_id'] : 0;
 
-        $pagina=limpiar_cadena($pagina);
-        $url="index.php?vista=user_class_list&page=";
-        $registros=15;
-        $busqueda="";
+    $pagina = limpiar_cadena($pagina);
+    $url = "index.php?vista=user_class_list&page=";
+    $registros = 15;
+    $busqueda = "";
 
-        require_once "./vistasUser/PhpStudent/usuario_clase_lista.php";
+    require_once "./php/usuario_clase_lista.php";
     ?>
 </div>

@@ -1,14 +1,14 @@
 <div class="container is-fluid mb-6">
-    <h1 class="title">Asistencia</h1>
-    <h2 class="subtitle">Lista de Asistencias</h2>
+    <h1 class="title">Roles</h1>
+    <h2 class="subtitle">Lista de Roles</h2>
 </div>
 
 <div class="container pb-6 pt-6">
     <?php
     require_once "./php/main.php";
 
-    if (isset($_GET['asistencia_id_del'])) {
-        require_once "./php/asistencia_eliminar.php";
+    if (isset($_GET['rol_code_del'])) {
+        require_once "./php/rol_eliminar.php";
     }
 
     if (!isset($_GET['page'])) {
@@ -21,10 +21,10 @@
     }
 
     $pagina = limpiar_cadena($pagina);
-    $url = "index.php?vista=attendance_list&page=";
+    $url = "index.php?vista=rol_list&page=";
     $registros = 15;
     $busqueda = "";
 
-    require_once "./php/asistencia_lista.php";
+    require_once "./php/rol_lista.php";
     ?>
 </div>

@@ -16,7 +16,7 @@
             if ($clases->rowCount() > 0) {
                 $clases = $clases->fetchAll();
                 foreach ($clases as $row) {
-                    echo '<a href="index.php?vista=user_class_category&category_id=' . $row['clase_id'] . '" class="button is-link is-inverted is-fullwidth">' . $row['clase_nombre'] . '</a>';
+                    echo '<a href="index.php?vista=attendance_class_category&category_id=' . $row['clase_id'] . '" class="button is-link is-inverted is-fullwidth">' . $row['clase_nombre'] . '</a>';
                 }
             } else {
                 echo '<p class="has-text-centered" >No hay categorías registradas</p>';
@@ -42,8 +42,8 @@
 
                 require_once "./php/main.php";
 
-                if (isset($_GET['product_id_del'])) {
-                    require_once "./php/usuario_clase_eliminar.php";
+                if (isset($_GET['attendance_id_del'])) {
+                    require_once "./php/asistencia_eliminar.php";
                 }
 
                 if (!isset($_GET['page'])) {
@@ -56,11 +56,11 @@
                 }
 
                 $pagina = limpiar_cadena($pagina);
-                $url = "index.php?vista=user_class_category&category_id=$clase_id&page="; /* <== */
+                $url = "index.php?vista=attendance_class_category&category_id=$clase_id&page="; /* <== */
                 $registros = 15;
                 $busqueda = "";
 
-                require_once "./php/usuario_clase_lista.php";
+                require_once "./php/asistencia_lista.php";
             } else {
                 echo '<h2 class="has-text-centered title" >Seleccione una categoría para empezar</h2>';
             }

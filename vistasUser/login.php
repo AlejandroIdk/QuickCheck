@@ -5,14 +5,14 @@
         <div class="field">
             <label class="label">Email</label>
             <div class="control">
-                <input class="input" type="text" name="login_email" required>
+                <input class="input" type="text" name="login_email">
             </div>
         </div>
 
         <div class="field">
             <label class="label">Contraseña</label>
             <div class="control">
-                <input class="input" type="password" name="login_clave" pattern="[a-zA-Z0-9$@.-]{7,100}" maxlength="100" required>
+                <input class="input" type="password" name="login_clave" pattern="[a-zA-Z0-9$@.-]{7,100}" maxlength="100">
             </div>
         </div>
 

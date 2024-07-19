@@ -1,68 +1,77 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <?php
-// Almacenando datos
+
 $email = limpiar_cadena($_POST['login_email']);
 $clave = limpiar_cadena($_POST['login_clave']);
 
-// Verificando campos obligatorios
 if (empty($email) || empty($clave)) {
-    echo '
-        <div class="notification is-danger is-light">
-            <strong>¡Ocurrió un error inesperado!</strong><br>
-            No has llenado todos los campos que son obligatorios
-        </div>
-    ';
+    mostrarAlerta('error', '¡Ocurrió un error inesperado!', 'No has llenado todos los campos que son obligatorios');
     exit();
 }
 
-// Verificación de formato de email y clave
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    echo '
-        <div class="notification is-danger is-light">
-            <strong>¡Ocurrió un error inesperado!</strong><br>
-            El email no coincide con el formato solicitado
-        </div>
-    ';
+    mostrarAlerta('error', '¡Ocurrió un error inesperado!', 'El email no coincide con el formato solicitado');
     exit();
 }
 
-// Verificación en la base de datos con PDO y sentencias preparadas
-$check_user = conexion(); // Debes definir tu función conexion() correctamente
+$check_user = conexion();
 
 $stmt = $check_user->prepare("SELECT * FROM usuario WHERE usuario_email = ?");
 $stmt->execute([$email]);
 $user = $stmt->fetch();
 
 if ($user) {
-    // Verificar si la clave ingresada coincide con la clave almacenada
     if (password_verify($clave, $user['usuario_clave'])) {
-        // Iniciar sesión y almacenar datos en $_SESSION
+
         $_SESSION['id'] = $user['usuario_identificacion'];
         $_SESSION['nombre'] = $user['usuario_nombre'];
         $_SESSION['usuario'] = $user['usuario_email'];
-        $_SESSION['rol_code'] = $user['rol_code']; // Asegúrate de almacenar el rol adecuadamente
+        $_SESSION['rol_code'] = $user['rol_code'];
 
-        // Redireccionar al usuario a la página de inicio después del inicio de sesión
-        header("Location: index.php?vista=home");
+        echo '<script>
+                Swal.fire({
+                    icon: "success",
+                    title: "¡Inicio de sesión exitoso!",
+                    text: "Redirigiendo a la página principal...",
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 1000,
+                    timerProgressBar: true,
+                    didClose: () => {
+                        window.location.href = "index.php?vista=home";
+                    }
+                });
+              </script>';
         exit();
     } else {
-        // Si la clave no coincide
-        echo '
-            <div class="notification is-danger is-light">
-                <strong>¡Ocurrió un error inesperado!</strong><br>
-                Usuario o clave incorrectos
-            </div>
-        ';
+        mostrarAlerta('error', '¡Ocurrió un error inesperado!', 'Correo o clave incorrectos');
         exit();
     }
 } else {
-    // Si no se encontró ningún usuario con el email proporcionado
-    echo '
-        <div class="notification is-danger is-light">
-            <strong>¡Ocurrió un error inesperado!</strong><br>
-            Usuario o clave incorrectos
-        </div>
-    ';
+    mostrarAlerta('error', '¡Ocurrió un error inesperado!', 'Correo o clave incorrectos');
     exit();
 }
+
+function mostrarAlerta($tipo, $titulo, $mensaje)
+{
+    echo '<script>
+            Swal.fire({
+                icon: "' . $tipo . '",
+                title: "' . $titulo . '",
+                text: "' . $mensaje . '",
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener("mouseenter", Swal.stopTimer);
+                    toast.addEventListener("mouseleave", Swal.resumeTimer);
+                }
+            });
+          </script>';
+}
+
 ?>
-<!-- Código HTML y PHP restante -->

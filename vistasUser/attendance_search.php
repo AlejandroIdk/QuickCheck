@@ -1,6 +1,6 @@
 <div class="container is-fluid mb-6">
-    <h1 class="title">Clases</h1>
-    <h2 class="subtitle">Buscar Clase</h2>
+    <h1 class="title">asistencias</h1>
+    <h2 class="subtitle">Buscar asistencia</h2>
 </div>
 
 <div class="container pb-6 pt-6">
@@ -11,12 +11,12 @@
         require_once "./php/buscador.php";
     }
 
-    if (!isset($_SESSION['busqueda_clases']) && empty($_SESSION['busqueda_clases'])) {
+    if (!isset($_SESSION['busqueda_asistencia']) && empty($_SESSION['busqueda_asistencia'])) {
     ?>
         <div class="columns">
             <div class="column">
                 <form action="" method="POST" autocomplete="off">
-                    <input type="hidden" name="modulo_buscador" value="clases">
+                    <input type="hidden" name="modulo_buscador" value="asistencia">
                     <div class="field is-grouped">
                         <p class="control is-expanded">
                             <input class="input is-rounded" type="text" name="txt_buscador" placeholder="¿Qué estas buscando?" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,30}" maxlength="30">
@@ -32,18 +32,17 @@
         <div class="columns">
             <div class="column">
                 <form class="has-text-centered mt-6 mb-6" action="" method="POST" autocomplete="off">
-                    <input type="hidden" name="modulo_buscador" value="clases">
-                    <input type="hidden" name="eliminar_buscador" value="clases">
-                    <p>Estas buscando <strong>“<?php echo $_SESSION['busqueda_clases']; ?>”</strong></p>
+                    <input type="hidden" name="modulo_buscador" value="asistencia">
+                    <input type="hidden" name="eliminar_buscador" value="asistencia">
+                    <p>Estas buscando <strong>“<?php echo $_SESSION['busqueda_asistencia']; ?>”</strong></p>
                     <br>
                     <button type="submit" class="button is-danger is-rounded">Eliminar busqueda</button>
                 </form>
             </div>
         </div>
-
     <?php
-        if (isset($_GET['clase_id_del'])) {
-            require_once "./php/clase_eliminar.php";
+        if (isset($_GET['attendance_id_del'])) {
+            require_once "./php/asistencia_eliminar.php";
         }
 
         if (!isset($_GET['page'])) {
@@ -55,12 +54,15 @@
             }
         }
 
-        $pagina = limpiar_cadena($pagina);
-        $url = "index.php?vista=category_search&page=";
-        $registros = 15;
-        $busqueda = $_SESSION['busqueda_clases'];
+        $clase_id = (isset($_GET['category_id'])) ? $_GET['category_id'] : 0;
 
-        require_once "./php/clase_lista.php";
+
+        $pagina = limpiar_cadena($pagina);
+        $url = "index.php?vista=attendance_search&page=";
+        $registros = 15;
+        $busqueda = $_SESSION['busqueda_asistencia'];
+
+        require_once "./php/asistencia_lista.php";
     }
     ?>
 </div>

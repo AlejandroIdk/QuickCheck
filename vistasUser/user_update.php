@@ -18,15 +18,14 @@ $id = limpiar_cadena($id);
     <?php
     include "./inc/btn_back.php";
 
-    /*== Verificando usuario ==*/
     $check_usuario = conexion();
     $check_usuario = $check_usuario->query("SELECT * FROM usuario WHERE usuario_identificacion='$id'");
 
     if ($check_usuario->rowCount() > 0) {
         $datos = $check_usuario->fetch();
-        ?>
+    ?>
 
-        <div class="form-rest mb-6 mt-6"></div>
+        <div class="form-rest"></div>
 
         <h2 class="title has-text-centered"><?php echo $datos['usuario_nombre'] . ' ' . $datos['usuario_apellido']; ?></h2>
 
@@ -37,27 +36,21 @@ $id = limpiar_cadena($id);
             <div class="row">
                 <div class="col-md-6 mt-3">
                     <div class="form-group">
-                        <label for="rol_code">Rol:</label>
-
-                        <!-- Campo oculto para enviar rol_code -->
-                        <input type="hidden" name="rol_code" value="<?php echo htmlspecialchars($datos['rol_code']); ?>">
-
-                        <select class="form-control" disabled>
-                            <?php
-                            // Conexión y consulta para obtener los roles
-                            $conexion = conexion();
-                            $query = $conexion->query("SELECT * FROM roles");
-                            $roles = $query->fetchAll();
-
-                            // Iterar sobre los resultados y generar las opciones del select
-                            foreach ($roles as $rol) {
-                                // Determinar si esta opción debe ser seleccionada
-                                $isSelected = ($rol['rol_code'] == $datos['rol_code']) ? 'selected' : '';
-
-                                echo '<option value="' . $rol['rol_code'] . '" ' . $isSelected . '>' . htmlspecialchars($rol['rol_nombre']) . '</option>';
-                            }
-                            ?>
-                        </select>
+                        <label for="rol_code">Rol:</label><br>
+                        <div class="select">
+                            <select class="form-control" name="rol_code">
+                                <option value="" selected>Seleccione una opción</option>
+                                <?php
+                                $usuarios = conexion()->query("SELECT * FROM roles");
+                                if ($usuarios->rowCount() > 0) {
+                                    $usuarios = $usuarios->fetchAll();
+                                    foreach ($usuarios as $usuario) {
+                                        echo '<option value="' . $usuario['rol_code'] . '">' . $usuario['rol_nombre'] . '</option>';
+                                    }
+                                }
+                                ?>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -66,22 +59,21 @@ $id = limpiar_cadena($id);
                 <div class="col-md-6 mt-3">
                     <div class="form-group">
                         <label for="usuario_nombre">Nombre:</label>
-                        <input type="text" class="form-control" id="usuario_nombre" name="usuario_nombre" required pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" maxlength="40" value="<?php echo $datos['usuario_nombre']; ?>" readonly>
+                        <input type="text" class="form-control" id="usuario_nombre" name="usuario_nombre" required pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" maxlength="40" value="<?php echo $datos['usuario_nombre']; ?>">
                     </div>
                 </div>
                 <div class="col-md-6 mt-3">
                     <div class="form-group">
                         <label for="usuario_apellido">Apellido:</label>
-                        <input type="text" class="form-control" id="usuario_apellido" name="usuario_apellido" required pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" maxlength="40" value="<?php echo $datos['usuario_apellido']; ?>" readonly>
+                        <input type="text" class="form-control" id="usuario_apellido" name="usuario_apellido" required pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" maxlength="40" value="<?php echo $datos['usuario_apellido']; ?>">
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-md-6 mt-3">
                     <div class="form-group">
                         <label for="usuario_identificacion">Identificación:</label>
-                        <input type="text" class="form-control" id="usuario_identificacion" name="usuario_identificacion" required pattern="[0-9]{3,10}" maxlength="10" value="<?php echo $datos['usuario_identificacion']; ?>" readonly>
+                        <input type="text" class="form-control" id="usuario_identificacion" name="usuario_identificacion" required pattern="{3,40}" maxlength="10" value="<?php echo $datos['usuario_identificacion']; ?>" readonly>
                     </div>
                 </div>
                 <div class="col-md-6 mt-3">
@@ -91,6 +83,8 @@ $id = limpiar_cadena($id);
                     </div>
                 </div>
             </div>
+
+
 
             <div class="row">
                 <div class="col-md-6 mt-3">
