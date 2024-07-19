@@ -1,0 +1,16 @@
+generateRandomCode(length)
+	Esta función genera un código aleatorio de longitud específica utilizando caracteres alfanuméricos. En tu caso, genera un código de longitud 10 cada vez que se llama.
+
+generateQrCode()
+	Esta función es responsable de coordinar la generación del código QR. Aquí está lo que hace paso a paso:
+     		* Llama a `generateRandomCode(10)` para obtener un código aleatorio.
+     		* Inserta este código en un campo de formulario oculto (`#generatedCode`) para que pueda ser enviado junto con el formulario.
+     		* Construye la URL de la API (`apiUrl`) que genera el código QR utilizando el servicio `qrserver.com`.
+     		* Asigna esta URL como la fuente (`src`) de la imagen (`qrImg`) donde se mostrará el código QR.
+     		* Muestra el contenedor (`qr-con`) que contiene la imagen del código QR para que sea visible al usuario.
+
+generateRandomCode(length)
+	es necesario porque proporciona el texto que se utilizará para generar el código QR. Sin este texto, no se podría crear un código QR válido.
+  
+generateQrCode()
+	coordina todo el proceso de generación y visualización del código QR. Sin esta función, el usuario no vería el código QR generado ni se enviaría el código aleatorio con el formulario para su procesamiento posterior.

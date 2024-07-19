@@ -82,18 +82,13 @@
     </div>
 </nav>
 
-<!-- Script para SweetAlert -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Obtener el enlace de "Salir"
     const logoutLink = document.getElementById('btn-logout');
 
-    // Agregar un event listener para el clic
     logoutLink.addEventListener('click', function(event) {
-        // Prevenir el comportamiento predeterminado del enlace
         event.preventDefault();
 
-        // Mostrar el alert de SweetAlert
         Swal.fire({
             title: '¿Estás seguro que deseas salir?',
             text: '¡Hasta luego!',
@@ -105,7 +100,6 @@ document.addEventListener('DOMContentLoaded', function() {
             cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.isConfirmed) {
-                // Si el usuario confirma, redirigir al enlace de salida
                 window.location.href = logoutLink.getAttribute('href');
             }
         });

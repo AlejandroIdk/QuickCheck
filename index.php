@@ -14,15 +14,15 @@
             // Verificar si el usuario está autenticado
             if (!isset($_SESSION['id']) || empty($_SESSION['id']) || !isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
                 include "./vistas/logout.php";
-                exit(); // Finalizar ejecución si no hay sesión activa
+                exit();
             }
 
             // Incluir la barra de navegación según el rol del usuario
             if ($_SESSION['rol_code'] == 1) {
-                // Admin role
+                // Administrador
                 include "./inc/navbar.php";
             } elseif ($_SESSION['rol_code'] == 2) {
-                // User role
+                // Estudiante
                 include "./inc/navbarStudent.php";
             }
 

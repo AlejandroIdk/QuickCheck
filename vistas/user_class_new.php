@@ -80,36 +80,52 @@
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
 
 <!-- QR Code Generator Script -->
 <script>
+    // Esta función genera un código aleatorio de longitud 'length' utilizando caracteres alfanuméricos
     function generateRandomCode(length) {
+        // Define los caracteres posibles para el código aleatorio
         const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+        // Inicializa una cadena vacía para almacenar el código generado
         let randomString = '';
 
+        // Itera 'length' veces para generar cada carácter del código
         for (let i = 0; i < length; i++) {
+            // Genera un índice aleatorio dentro del rango de la longitud de 'characters'
             const randomIndex = Math.floor(Math.random() * characters.length);
+            // Añade el carácter correspondiente al índice aleatorio al código generado
             randomString += characters.charAt(randomIndex);
         }
 
+        // Retorna el código aleatorio generado
         return randomString;
     }
 
+    // Esta función genera un código QR basado en el texto aleatorio generado
     function generateQrCode() {
+        // Obtiene la referencia al elemento de imagen donde se mostrará el código QR
         const qrImg = document.getElementById('qrImg');
 
+        // Genera un código aleatorio de longitud 10
         let text = generateRandomCode(10);
+        
+        // Inserta el texto generado en un campo de formulario con id 'generatedCode'
         $("#generatedCode").val(text);
 
+        // Verifica si el texto generado está vacío
         if (text === "") {
+            // Muestra una alerta si no hay texto para generar un código QR
             alert("Por favor, ingresa un texto para generar un código QR.");
             return;
         } else {
+            // Construye la URL de la API para generar el código QR con el texto generado
             const apiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(text)}`;
-
+            
+            // Asigna la URL de la API como fuente de la imagen 'qrImg' para mostrar el código QR
             qrImg.src = apiUrl;
+            
+            // Muestra el contenedor que contiene la imagen del código QR
             document.querySelector('.qr-con').style.display = '';
         }
     }

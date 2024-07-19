@@ -10,22 +10,33 @@ function conexion()
 // Verificar datos 
 function verificar_datos($filtro, $cadena)
 {
+    // Utiliza la función preg_match para verificar si la cadena cumple con el filtro dado
     if (preg_match("/^" . $filtro . "$/", $cadena)) {
+        // Si la cadena cumple con el filtro (es decir, hay una coincidencia), retorna false
         return false;
     } else {
+        // Si la cadena no cumple con el filtro (no hay coincidencia), retorna true
         return true;
     }
 }
 
+
 // Limpiar cadenas de texto
 function limpiar_cadena($cadena)
 {
+    // Elimina espacios en blanco al principio y al final de la cadena
     $cadena = trim($cadena);
+
+    // Elimina barras invertidas adicionales de la cadena (generalmente usadas para escapar caracteres)
     $cadena = stripslashes($cadena);
+
+    // Elimina etiquetas <script> y sus variantes de la cadena
     $cadena = str_ireplace("<script>", "", $cadena);
     $cadena = str_ireplace("</script>", "", $cadena);
     $cadena = str_ireplace("<script src", "", $cadena);
     $cadena = str_ireplace("<script type=", "", $cadena);
+
+    // Elimina comandos SQL potencialmente peligrosos de la cadena
     $cadena = str_ireplace("SELECT * FROM", "", $cadena);
     $cadena = str_ireplace("DELETE FROM", "", $cadena);
     $cadena = str_ireplace("INSERT INTO", "", $cadena);
@@ -34,31 +45,57 @@ function limpiar_cadena($cadena)
     $cadena = str_ireplace("TRUNCATE TABLE", "", $cadena);
     $cadena = str_ireplace("SHOW TABLES;", "", $cadena);
     $cadena = str_ireplace("SHOW DATABASES;", "", $cadena);
+
+    // Elimina etiquetas PHP de la cadena
     $cadena = str_ireplace("<?php", "", $cadena);
     $cadena = str_ireplace("?>", "", $cadena);
+
+    // Elimina el comentario SQL de doble guion (--)
     $cadena = str_ireplace("--", "", $cadena);
+
+    // Elimina el símbolo ^ de la cadena
     $cadena = str_ireplace("^", "", $cadena);
+
+    // Elimina el símbolo < de la cadena
     $cadena = str_ireplace("<", "", $cadena);
+
+    // Elimina los corchetes [ y ]
     $cadena = str_ireplace("[", "", $cadena);
     $cadena = str_ireplace("]", "", $cadena);
+
+    // Elimina el operador de igualdad doble (==) y el punto y coma (;) de la cadena
     $cadena = str_ireplace("==", "", $cadena);
     $cadena = str_ireplace(";", "", $cadena);
+
+    // Elimina el operador de resolución de ámbito (::) de la cadena
     $cadena = str_ireplace("::", "", $cadena);
+
+    // Elimina espacios en blanco al principio y al final de la cadena (de nuevo por precaución)
     $cadena = trim($cadena);
+
+    // Elimina barras invertidas adicionales (de nuevo por precaución)
     $cadena = stripslashes($cadena);
+
+    // Retorna la cadena limpia y segura
     return $cadena;
 }
+
+
 
 // Funcion paginador de tablas
 function paginador_tablas($pagina, $Npaginas, $url, $botones)
 {
+    // Inicia la estructura del componente de paginación con clases de Bulma CSS
     $tabla = '<nav class="pagination is-centered is-rounded" role="navigation" aria-label="pagination">';
 
+    // Comprueba si la página actual es la primera
     if ($pagina <= 1) {
+        // Si es la primera página, muestra el botón 'Anterior' deshabilitado y abre la lista de páginas
         $tabla .= '
         <a class="pagination-previous is-disabled" disabled >Anterior</a>
         <ul class="pagination-list">';
     } else {
+        // Si no es la primera página, muestra el botón 'Anterior' con enlace y las primeras páginas numeradas
         $tabla .= '
         <a class="pagination-previous" href="' . $url . ($pagina - 1) . '" >Anterior</a>
         <ul class="pagination-list">
@@ -67,25 +104,36 @@ function paginador_tablas($pagina, $Npaginas, $url, $botones)
         ';
     }
 
+    // Contador para controlar la cantidad de botones de página a mostrar
     $ci = 0;
+
+    // Ciclo para generar los botones de página numerados
     for ($i = $pagina; $i <= $Npaginas; $i++) {
+        // Verifica si se han generado suficientes botones según el parámetro $botones
         if ($ci >= $botones) {
             break;
         }
+        // Comprueba si el botón actual es la página activa
         if ($pagina == $i) {
+            // Si es la página activa, muestra el enlace con la clase 'is-current'
             $tabla .= '<li><a class="pagination-link is-current" href="' . $url . $i . '">' . $i . '</a></li>';
         } else {
+            // Si no es la página activa, muestra el enlace normal
             $tabla .= '<li><a class="pagination-link" href="' . $url . $i . '">' . $i . '</a></li>';
         }
+        // Incrementa el contador de botones generados
         $ci++;
     }
 
+    // Comprueba si la página actual es la última
     if ($pagina == $Npaginas) {
+        // Si es la última página, cierra la lista de páginas y muestra el botón 'Siguiente' deshabilitado
         $tabla .= '
         </ul>
         <a class="pagination-next is-disabled" disabled >Siguiente</a>
         ';
     } else {
+        // Si no es la última página, muestra el resto de páginas numeradas y el botón 'Siguiente' con enlace
         $tabla .= '
             <li><span class="pagination-ellipsis">&hellip;</span></li>
             <li><a class="pagination-link" href="' . $url . $Npaginas . '">' . $Npaginas . '</a></li>
@@ -94,31 +142,9 @@ function paginador_tablas($pagina, $Npaginas, $url, $botones)
         ';
     }
 
+    // Cierra la estructura del componente de paginación
     $tabla .= '</nav>';
+
+    // Retorna el HTML completo del componente de paginación
     return $tabla;
 }
-// // // // Uso de las funciones en el código
-
-// // // // Aquí puedes utilizar las funciones en tu aplicación 
-
-// // // // Ejemplo de uso de conexión:
-// // // // $pdo = conexion();
-// // // // Aquí puedes realizar consultas usando $pdo
-
-// // // // Ejemplo de uso de limpiar_cadena:
-// // // // $cadena = '<script>alert("Hola");</script>';
-// // // // $cadena_limpia = limpiar_cadena($cadena);
-
-// // // // Ejemplo de uso de verificar_datos:
-// // // // $filtro = "[a-zA-Z0-9$@.-]{7,100}";
-// // // // $cadena_verificar = "ejemplo123$@";
-// // // // $resultado = verificar_datos($filtro, $cadena_verificar);
-
-// // // // Ejemplo de uso de paginador_tablas:
-// // // // $pagina_actual = 1;
-// // // // $total_paginas = 10;
-// // // // $url_base = "listado.php?page=";
-// // // // $num_botones = 5;
-// // // // $paginador = paginador_tablas($pagina_actual, $total_paginas, $url_base, $num_botones);
-
-// // // // echo $paginador; // Aquí se mostrará el paginador generado

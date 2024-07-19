@@ -3,22 +3,20 @@
 -- -----------------------------------------------------
 
 INSERT INTO `roles` (`rol_code`, `rol_nombre`) VALUES
-(1, 'Administrador'),
-(2, 'Profesor'),
-(3, 'Estudiante');
+(1, 'ADMINISTRADOR'),
+(2, 'PROFESOR'),
+(3, 'ESTUDIANTE');
 
 -- -----------------------------------------------------
 -- INSERT INTO`.`usuario`
 -- -----------------------------------------------------
 INSERT INTO `usuario` (`usuario_identificacion`, `usuario_nombre`, `usuario_apellido`, `usuario_email`, `usuario_clave`, `rol_code`) VALUES
-(234231412, 'Luis', 'Lopez', 'Luis@gmail.com', '$2y$10$.EzQxqIgHbJbPIDGAt9oferePsNfJL29vvU8nq8W0UBme5Ju8gNPi', 3),
-(345456576, 'Falcao', 'Junior', 'Falcao@gmail.com', '$2y$10$lKeQi7T3AB11j6CcD7VaQ.hFqqr4HeivtrwRNoD2V0v/.a9ppfM7O', 3),
-(347686773, 'Johan', 'Naranjo', 'Johan@gmail.com', '$2y$10$IR/FKrEBYQwEnRR4QZ3md.c5UO73tEKtXJoLLR4wxgbgoMiV8kBFu', 3),
-(453745673, 'Diego', 'Mesa', 'Diego@gmail.com', '$2y$10$nxxysB7.FxPhYYGufnowpe/JIAaLHYNfjd84uggMSHwRuZcpcokj2', 3),
-(456785967, 'Elias', 'Ramirez', 'Elias@gmail.com', '$2y$10$Rb0r/.awlKsrVBJqL/6RTe6UNfa5E6JQWfchPfUFVv76.s8UQVflK', 3),
-(457638925, 'James', 'Rodriguez', 'James@gmail.com', '$2y$10$J6tuwboYmdm8h5112QdcfONexB4gaMU6ZZugK3S2YcB4nguoxLnJq', 2),
-(546346657, 'Alejandro', 'Ortiz', 'a@gmail.com', '$2y$10$zQqBUFisfgYV91mXMwa0UeT5aawNBAGZIwHuIZkRXhkBB/oLbfJlO', 1),
-(568769678, 'Hector', 'Ortiz', 'Hector@gmail.com', '$2y$10$jR8l7U5bACGP4xo.z2Hb8eob/KIeWap3D3HPSoCBb0wqUW.4lrIZu', 3);
+(345456576, 'FALCAO', 'JUNIOR', 'Falcao@gmail.com', '$2y$10$lYN8ViaBq3BO7ZoedNpFpO7YHYJI3/yOA7EiN1AkQ2.zRlZ8lM2Ya', 3),
+(347686773, 'JOHAN', 'NARANJO', 'Johan@gmail.com', '$2y$10$NkS3bbGpLlFLEp/J.mUzPet5qlv9n/EIfltaJc88rOikHVkQDx2A6', 3),
+(453745673, 'DIEGO', 'MESA', 'Diego@gmail.com', '$2y$10$p6gzMlqW9McibvbVcK.Cf.mfAVoDzkgU2ak0ga3esfw3TaQloCl8S', 3),
+(456785967, 'ELIAS', 'RAMIREZ', 'Elias@gmail.com', '$2y$10$gaFae1ULVWV8gM6F8waoBeUojXePZmhgIHaBdbANnMztSjMbOqF3O', 3),
+(546346657, 'ALEJANDRO', 'ORTIZ', 'a@gmail.com', '$2y$10$1U/6eUy63jvIeQ2yNu8XjuOVAhqMzBTQ0bSzQpYPBV6ARjcYfjqi2', 1),
+(568769678, 'HECTOR', 'ORTIZ', 'Hector@gmail.com', '$2y$10$GmJDZ67q9KrLYderzYq7t.yRhkJ9o8Lsqj7GBVIwo.TQVZmh3rfWW', 3);
 
 -- -----------------------------------------------------
 -- INSERT INTO`.`clases`
@@ -41,3 +39,22 @@ INSERT INTO `clases` (`clase_id`, `clase_nombre`, `clase_ubicacion`) VALUES
 (14, 'SOLUCIONES INTEGRALES', 'D-102'),
 (15, 'BARBERIA', 'C-203'),
 (16, 'VETERINARIA', 'C-304');
+
+-- -----------------------------------------------------
+-- INSERT INTO`.`usuario_clase`
+-- -----------------------------------------------------
+
+INSERT INTO `usuario_clase` (`userclass_id`, `clase_id`, `usuario_identificacion`, `generated_code`) VALUES
+(1, 1, 345456576, '2bk47RhOrS'),
+(2, 2, 347686773, 'M48xOnU2fx'),
+(3, 14, 345456576, 'jxpbfaCa03'),
+(4, 4, 347686773, 'IlZY8TzmAm');
+
+-- -----------------------------------------------------
+-- INSERT INTO`.`asistencia`
+-- -----------------------------------------------------
+
+INSERT INTO `asistencia` (`asistencia_id`, `usuario_identificacion`, `clase_id`, `fecha`) VALUES
+(1, 345456576, 3, '2024-07-19 19:08:06'),
+(2, 347686773, 2, '2024-07-19 19:08:11'),
+(3, 345456576, 14, '2024-07-19 19:08:13');
