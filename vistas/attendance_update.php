@@ -1,80 +1,93 @@
-<?php
-require_once "./php/main.php";
+<main id="main" class="main">
+<div class="pagetitle justify-content-center">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.php?vista=user_new">Crear Usuario</a></li>
+                <li class="breadcrumb-item"><a href="index.php?vista=user_list">Lista de Usuarios</a></li>
+                <li class="breadcrumb-item"><a href="index.php?vista=user_search">Buscar Usuario</a></li>
+            </ol>
+        </nav>
+    </div>
 
-$id = (isset($_GET['attendance_id_up'])) ? $_GET['attendance_id_up'] : 0;
-$id = limpiar_cadena($id);
+   
 
-?>
-
-<div class="container pb-6 pt-6">
     <?php
-    include "./inc/btn_back.php";
+    require_once "./php/main.php";
 
-    $check_asistencia = conexion()->prepare("SELECT * FROM asistencia WHERE asistencia_id = :id");
-    $check_asistencia->execute([':id' => $id]);
+    $id = (isset($_GET['attendance_id_up'])) ? $_GET['attendance_id_up'] : 0;
+    $id = limpiar_cadena($id);
 
-    if ($check_asistencia->rowCount() > 0) {
-        $datos = $check_asistencia->fetch();
     ?>
 
-        <div class="form-rest mb-6 mt-6"></div>
+    <div class="container pb-6 pt-6">
+        <?php
+        include "./inc/btn_back.php";
 
-        <form action="./php/asistencia_actualizar.php" method="POST" class="FormularioAjax" autocomplete="off">
-            <input type="hidden" name="asistencia_id" value="<?php echo $datos['asistencia_id']; ?>">
+        $check_asistencia = conexion()->prepare("SELECT * FROM asistencia WHERE asistencia_id = :id");
+        $check_asistencia->execute([':id' => $id]);
 
-            <div class="columns">
-                <div class="column">
-                    <div class="form-group">
-                        <label for="usuario_identificacion">Identificación de Usuario:</label><br>
-                        <div class="select mt-3">
-                            <select class="form-control" name="usuario_identificacion">
-                                <?php
-                                $usuarios = conexion()->query("SELECT * FROM usuario");
-                                if ($usuarios->rowCount() > 0) {
-                                    while ($usuario = $usuarios->fetch()) {
-                                        $selected = ($usuario['usuario_identificacion'] == $datos['usuario_identificacion']) ? 'selected' : '';
-                                        echo '<option value="' . $usuario['usuario_identificacion'] . '" ' . $selected . '>' . $usuario['usuario_identificacion'] . '</option>';
+        if ($check_asistencia->rowCount() > 0) {
+            $datos = $check_asistencia->fetch();
+        ?>
+
+            <div class="form-rest mb-6 mt-6"></div>
+
+            <form action="./php/asistencia_actualizar.php" method="POST" class="FormularioAjax" autocomplete="off">
+                <input type="hidden" name="asistencia_id" value="<?php echo $datos['asistencia_id']; ?>">
+
+                <div class="columns">
+                    <div class="column">
+                        <div class="form-group">
+                            <label for="usuario_identificacion">Identificación de Usuario:</label><br>
+                            <div class="select mt-3">
+                                <select class="form-control" name="usuario_identificacion">
+                                    <?php
+                                    $usuarios = conexion()->query("SELECT * FROM usuario");
+                                    if ($usuarios->rowCount() > 0) {
+                                        while ($usuario = $usuarios->fetch()) {
+                                            $selected = ($usuario['usuario_identificacion'] == $datos['usuario_identificacion']) ? 'selected' : '';
+                                            echo '<option value="' . $usuario['usuario_identificacion'] . '" ' . $selected . '>' . $usuario['usuario_identificacion'] . '</option>';
+                                        }
                                     }
-                                }
-                                ?>
-                            </select>
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="form-group">
+                            <label for="clase_id">Nombre de la Clase:</label><br>
+                            <div class="select mt-3">
+                                <select class="form-control" name="clase_id">
+                                    <?php
+                                    $clases = conexion()->query("SELECT * FROM clases");
+                                    if ($clases->rowCount() > 0) {
+                                        while ($clase = $clases->fetch()) {
+                                            $selected = ($clase['clase_id'] == $datos['clase_id']) ? 'selected' : '';
+                                            echo '<option value="' . $clase['clase_id'] . '" ' . $selected . '>' . $clase['clase_nombre'] . '</option>';
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="form-group">
+                            <label for="fecha">Fecha de Asistencia:</label><br>
+                            <input class="form-control mt-3" type="datetime" name="fecha" value="<?php echo $datos['fecha']; ?>" required>
                         </div>
                     </div>
                 </div>
-                <div class="column">
-                    <div class="form-group">
-                        <label for="clase_id">Nombre de la Clase:</label><br>
-                        <div class="select mt-3">
-                            <select class="form-control" name="clase_id">
-                                <?php
-                                $clases = conexion()->query("SELECT * FROM clases");
-                                if ($clases->rowCount() > 0) {
-                                    while ($clase = $clases->fetch()) {
-                                        $selected = ($clase['clase_id'] == $datos['clase_id']) ? 'selected' : '';
-                                        echo '<option value="' . $clase['clase_id'] . '" ' . $selected . '>' . $clase['clase_nombre'] . '</option>';
-                                    }
-                                }
-                                ?>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="form-group">
-                        <label for="fecha">Fecha de Asistencia:</label><br>
-                        <input class="form-control mt-3" type="datetime" name="fecha" value="<?php echo $datos['fecha']; ?>" required>
-                    </div>
-                </div>
-            </div>
 
-            <p class="has-text-centered">
-                <button type="submit" class="button btn btn-primary is-rounded mt-5">Actualizar</button>
-            </p>
-        </form>
+                <p class="has-text-centered">
+                    <button type="submit" class="button btn btn-primary is-rounded mt-5"  style="background-color: green;">Actualizar</button>
+                </p>
+            </form>
 
-    <?php
-    } else {
-        include "./inc/error_alert.php";
-    }
-    ?>
-</div>
+        <?php
+        } else {
+            include "./inc/error_alert.php";
+        }
+        ?>
+    </div>
