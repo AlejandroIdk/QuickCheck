@@ -28,11 +28,11 @@ if (!isset($_SESSION['id']) || empty($_SESSION['id']) || !isset($_SESSION['usuar
         } else {
             include "./vistas/404.php"; // Mostrar página de error 404 si la vista no existe
         }
-    } elseif ($_SESSION['rol_code'] == 2) {
+    } elseif ($_SESSION['rol_code'] == 3) {
         // Usuario normal
-        if (is_file("./vistasTeacher/$vista.php") && $vista != 'login' && $vista != '404') {
-            include "./inc/navbarTeacher.php"; // Incluir barra de navegación para usuario normal
-            include "./vistasTeacher/$vista.php"; // Incluir la vista de usuario correspondiente
+        if (is_file("./vistasStudent/$vista.php") && $vista != 'login' && $vista != '404') {
+            include "./inc/navbarStudent.php"; // Incluir barra de navegación para usuario normal
+            include "./vistasStudent/$vista.php"; // Incluir la vista de usuario correspondiente
         } else {
             include "./vistas/404.php"; // Mostrar página de error 404 si la vista no existe
         }

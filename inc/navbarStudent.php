@@ -51,16 +51,14 @@
       </a>
     </li>
 
- 
+
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-people-fill"></i><span>Añadir Usuario a Clase</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="bi bi-people-fill"></i><span>Usuario -> Clase</span><i class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="tables-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-        <li><a href="index.php?vista=user_class_new"><i class="bi bi-circle"></i><span>Añadir a Clase</span></a></li>
         <li><a href="index.php?vista=user_class_list"><i class="bi bi-circle"></i><span>Lista de Usuarios</span></a></li>
         <li><a href="index.php?vista=user_class_category"><i class="bi bi-circle"></i><span>Listado por Categoria</span></a></li>
-        <li><a href="index.php?vista=user_class_search"><i class="bi bi-circle"></i><span>Buscar Usuarios</span></a></li>
       </ul>
     </li>
     <li class="nav-item">
@@ -69,7 +67,6 @@
       </a>
       <ul id="charts-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
         <li><a href="index.php?vista=class_list"><i class="bi bi-circle"></i><span>Lista de Clases</span></a></li>
-        <li><a href="index.php?vista=class_search"><i class="bi bi-circle"></i><span>Buscar Clase</span></a></li>
       </ul>
     </li>
     <li class="nav-item">
@@ -77,11 +74,8 @@
         <i class="bi bi-calendar"></i><span>Asistencia</span><i class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="icons-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-        <li><a href="index.php?vista=scanner_user"><i class="bi bi-circle"></i><span>Scannear Asistencia</span></a></li>
-        <li><a href="index.php?vista=attendance_manual"><i class="bi bi-circle"></i><span>Asistencia Manual</span></a></li>
         <li><a href="index.php?vista=attendance_list"><i class="bi bi-circle"></i><span>Lista de Asistencias</span></a></li>
         <li><a href="index.php?vista=attendance_class_category"><i class="bi bi-circle"></i><span>Listado por Categoria</span></a></li>
-        <li><a href="#"><i class="bi bi-circle"></i><span>Buscar Asistencia</span></a></li>
       </ul>
     </li>
   </ul>
@@ -92,7 +86,7 @@
       <h5 class="card-title">Mr Quick <span>| Todo Un Loquillo</span></h5>
 
       <div id="budgetChart" style="min-height: auto;" class="echart"></div>
-      <img src="./assets/img/pato.gif" alt="" style="width: 200px;">
+      <!-- <img src="./assets/img/pato.gif" alt="" style="width: 200px;"> -->
 
     </div>
   </div><!-- End Budget Report -->

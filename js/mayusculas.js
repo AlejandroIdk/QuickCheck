@@ -52,11 +52,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Obtener referencias a los campos específicos
     let usuarioIdentificacionInput = document.getElementById("usuario_identificacion");
+    let codigoInput = document.getElementById("codigo");
 
     // Agregar evento 'input' para permitir solo números al campo de identificación de usuario
     if (usuarioIdentificacionInput) {
         usuarioIdentificacionInput.addEventListener("input", function() {
             permitirSoloNumeros(usuarioIdentificacionInput);
+        });
+    }
+
+    if (codigoInput) {
+        codigoInput.addEventListener("input", function () {
+            permitirSoloNumeros(codigoInput);
         });
     }
 

@@ -36,8 +36,7 @@ $tabla .= '
                 	<th>#</th>
                     <th>Nombre</th>
                     <th>Salón</th>
-                    <th>Salón</th>
-                    <th colspan="2">Opciones</th>
+                    <th>Ver Estudiantes</th>
                 </tr>
             </thead>
             <tbody>
@@ -54,12 +53,6 @@ if ($total >= 1 && $pagina <= $Npaginas) {
                     <td>' . $rows['clase_ubicacion'] . '</td>
                     <td>
                         <a href="index.php?vista=user_class_category&category_id=' . $rows['clase_id'] . '" class="button is-link is-rounded is-small">Ver Estudiantes</a>
-                    </td>
-                    <td>
-                        <a href="index.php?vista=class_update&category_id_up=' . $rows['clase_id'] . '" class="button is-success is-rounded is-small">Actualizar</a>
-                    </td>
-                    <td>
-                        <a href="' . $url . $pagina . '&clase_id_del=' . $rows['clase_id'] . '" class="button is-danger is-rounded is-small">Eliminar</a>
                     </td>
                 </tr>
             ';

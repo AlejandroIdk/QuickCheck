@@ -1,7 +1,6 @@
 <?php
 $asistencia_id_del = limpiar_cadena($_GET['asistencia_id_del']);
 
-
 if (!isset($_POST['confirmar_eliminar'])) {
 
     echo '
@@ -34,14 +33,11 @@ $check_asistencia = $check_asistencia->query("SELECT * FROM asistencia WHERE asi
 if ($check_asistencia->rowCount() == 1) {
 
 	$datos = $check_asistencia->fetch();
-
 	$eliminar_asistencia = conexion();
 	$eliminar_asistencia = $eliminar_asistencia->prepare("DELETE FROM asistencia WHERE asistencia_id=:id");
-
 	$eliminar_asistencia->execute([":id" => $asistencia_id_del]);
 
 	if ($eliminar_asistencia->rowCount() == 1) {
-
 
 		echo '
 		<script>

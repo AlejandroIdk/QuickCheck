@@ -1,16 +1,3 @@
-<?php
-require_once "./php/main.php";
-
-if (isset($_GET['user_id_del'])) {
-    require_once "./php/usuario_eliminar.php";
-}
-
-$conexion = conexion();
-
-$consulta = $conexion->query("SELECT usuario.*, roles.rol_nombre FROM usuario JOIN roles ON usuario.rol_code = roles.rol_code ");
-$usuario = $consulta->fetchAll(PDO::FETCH_ASSOC);
-
-?>
 <main id="main" class="main">
     <div class="pagetitle justify-content-center">
         <nav>
@@ -22,95 +9,35 @@ $usuario = $consulta->fetchAll(PDO::FETCH_ASSOC);
         </nav>
     </div>
     <?php
-        include "./inc/btn_back.php";
+    include "./inc/btn_back.php";
     ?>
-
-    <div class="container is-fluid mt-3">
+    <div class="container is-fluid mb-6">
         <h1 class="title">Usuarios</h1>
-        <h2 class="subtitle">Lista de Usuarios</h2>
+        <h2 class="subtitle">Lista de usuarios</h2>
     </div>
 
-    <div class="container pb-6 pt-4">
-        <div class="table-responsive">
-            <table id="tablaUsuario" class="display nowrap" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>Rol</th>
-                        <th>Identificación</th>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Apellido</th>
-                        <th>Acciones</th>
+    <div class="container pb-6 pt-6">
+        <?php
+        require_once "./php/main.php";
 
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($usuario as $user) : ?>
-                        <tr>
-                            <td><?php echo $user['rol_nombre']; ?></td>
-                            <td><?php echo $user['usuario_identificacion']; ?></td>
-                            <td><?php echo $user['usuario_nombre']; ?></td>
-                            <td><?php echo $user['usuario_apellido']; ?></td>
-                            <td><?php echo $user['usuario_email']; ?></td>
+        if (isset($_GET['user_id_del'])) {
+            require_once "./php/usuario_eliminar.php";
+        }
 
-                            <td>
-                                <a href="index.php?vista=user_update&user_id_up=<?php echo $user['rol_code']; ?>" title="Editar">
-                                    <i class="fas fa-edit" style="color: green;"></i>
-                                </a>
-                                |
-                                <a href="index.php?vista=rol_eliminar&rol_code_del=<?php echo $user['rol_code']; ?>" title="Eliminar">
-                                    <i class="fas fa-trash-alt" style="color: red;"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
+        if (!isset($_GET['page'])) {
+            $pagina = 1;
+        } else {
+            $pagina = (int) $_GET['page'];
+            if ($pagina <= 1) {
+                $pagina = 1;
+            }
+        }
+
+        $pagina = limpiar_cadena($pagina);
+        $url = "index.php?vista=user_list&page=";
+        $registros = 15;
+        $busqueda = "";
+
+        require_once "./php/usuario_lista.php";
+        ?>
     </div>
-</main>
-
-<script>
-    $(document).ready(function() {
-        $('#tablaUsuario').DataTable({
-            responsive: true,
-            dom: 'Bfrtip', // Para agregar los botones al final de la tabla
-            buttons: [{
-                    extend: 'copy',
-                    exportOptions: {
-                        columns: [0, 1, 2, 3, 4] 
-                    }
-                },
-                {
-                    extend: 'csv',
-                    exportOptions: {
-                        columns: [0, 1, 2, 3, 4]
-                    }
-                },
-                {
-                    extend: 'excel',
-                    exportOptions: {
-                        columns: [0, 1, 2, 3, 4]
-                    }
-                },
-                {
-                    extend: 'pdf',
-                    exportOptions: {
-                        columns: [0, 1, 2, 3, 4] 
-                    }
-                },
-                {
-                    extend: 'print',
-                    exportOptions: {
-                        columns: [0, 1, 2, 3, 4]
-                    }
-                }
-            ],
-            // language: {
-            //     url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/Spanish.json' // Idioma en español
-            // }
-        });
-        
-    });
-</script>
-

@@ -13,6 +13,17 @@ if ($rol == "") {
     exit();
 }
 
+// Verificación para asegurarse de que el campo tenga al menos una letra
+if (!preg_match('/[a-zA-Z]/', $rol)) {
+    echo '
+            <div class="notification is-danger is-light">
+                <strong>¡Ocurrio un error inesperado!</strong><br>
+                El campo debe contener al menos una letra
+            </div>
+        ';
+    exit();
+}
+
 $check_roles = conexion();
 $check_roles = $check_roles->query("SELECT rol_nombre FROM roles WHERE rol_nombre='$rol'");
 if ($check_roles->rowCount() > 0) {

@@ -1,5 +1,6 @@
 <?php
-require_once "../inc/session_start.php";
+
+
 require_once "main.php";
 
 $id = limpiar_cadena($_POST['usuario_identificacion']);

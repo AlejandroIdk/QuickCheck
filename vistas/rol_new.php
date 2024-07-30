@@ -1,5 +1,4 @@
-
-	<main id="main" class="main">
+<main id="main" class="main">
 	<div class="pagetitle">
 		<nav>
 			<ol class="breadcrumb">
@@ -10,8 +9,8 @@
 		</nav>
 	</div>
 	<?php
-        include "./inc/btn_back.php";
-    ?>
+	include "./inc/btn_back.php";
+	?>
 
 	<div class="col-12 col-md-12">
 		<div class="card border-success ">

@@ -15,15 +15,10 @@ $asistencia = $consulta->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <main id="main" class="main">
-    <div class="pagetitle justify-content-center">
-        <nav>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.php?vista=user_new">Crear Usuario</a></li>
-                <li class="breadcrumb-item"><a href="index.php?vista=user_list">Lista de Usuarios</a></li>
-                <li class="breadcrumb-item"><a href="index.php?vista=user_search">Buscar Usuario</a></li>
-            </ol>
-        </nav>
-    </div>
+ 
+    <?php
+    include "./inc/btn_back.php";
+    ?>
 
     <div class="container is-fluid mt-3">
         <h1 class="title">Usuarios</h1>
@@ -41,7 +36,6 @@ $asistencia = $consulta->fetchAll(PDO::FETCH_ASSOC);
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>Fecha</th>
-                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -53,15 +47,7 @@ $asistencia = $consulta->fetchAll(PDO::FETCH_ASSOC);
                             <td><?php echo $ass['usuario_nombre']; ?></td>
                             <td><?php echo $ass['usuario_apellido']; ?></td>
                             <td><?php echo $ass['fecha']; ?></td>
-                            <td>
-                                <a href="index.php?vista=attendance_update&attendance_id_up=<?php echo $ass['asistencia_id']; ?>" title="Editar">
-                                    <i class="fas fa-edit" style="color: green;"></i>
-                                </a>
-                                |
-                                <a href="index.php?vista=asistencia_eliminar&asistencia_id_del=<?php echo $ass['asistencia_id']; ?>" title="Eliminar">
-                                    <i class="fas fa-trash-alt" style="color: red;"></i>
-                                </a>
-                            </td>
+                          
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

@@ -19,6 +19,10 @@
         <p class="has-text-centered mb-4 mt-3">
             <button type="submit" class="button is-info is-rounded">Iniciar sesión</button>
         </p>
+        <p class="has-text-centered mb-4 mt-3">
+            <a href="./vistas/recovery.php">¿Has olvidado tu contraseña?</a>
+
+        </p>
 
         <?php
         if (isset($_POST['login_email']) && isset($_POST['login_clave'])) {

@@ -21,8 +21,11 @@ $usuario = $consulta->fetchAll(PDO::FETCH_ASSOC);
             </ol>
         </nav>
     </div>
+    <?php
+        include "./inc/btn_back.php";
+    ?>
 
-    <div class="container is-fluid mt-3">
+    <div class="container is-fluid">
         <h1 class="title">Clases</h1>
         <h2 class="subtitle">Lista de Clases</h2>
     </div>
@@ -34,7 +37,7 @@ $usuario = $consulta->fetchAll(PDO::FETCH_ASSOC);
                     <tr>
                         <th>Clase</th>
                         <th>Salón</th>
-                        <th>Acciones</th>
+                        <th>Ver estudiantes</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -45,14 +48,6 @@ $usuario = $consulta->fetchAll(PDO::FETCH_ASSOC);
                             <td>
                                 <a href="index.php?vista=user_class_category&category_id=<?php echo $user['clase_id']; ?>" title="Ver estudiantes">
                                     <i class="fas fa-edit" style="color: green;"></i>
-                                </a>
-                                |
-                                <a href="index.php?vista=class_update&class_id_up=<?php echo $user['clase_id']; ?>" title="Editar">
-                                    <i class="fas fa-edit" style="color: green;"></i>
-                                </a>
-                                |
-                                <a href="index.php?vista=clase_eliminar&clase_id_del=<?php echo $user['clase_id']; ?>" title="Eliminar" onclick="return confirm('¿Estás seguro de eliminar esta clase?');">
-                                    <i class="fas fa-trash-alt" style="color: red;"></i>
                                 </a>
                             </td>
                         </tr>
@@ -71,31 +66,31 @@ $usuario = $consulta->fetchAll(PDO::FETCH_ASSOC);
             buttons: [{
                     extend: 'copy',
                     exportOptions: {
-                        columns: [0, 1, 2]
+                        columns: [0, 1]
                     }
                 },
                 {
                     extend: 'csv',
                     exportOptions: {
-                        columns: [0, 1, 2]
+                        columns: [0, 1]
                     }
                 },
                 {
                     extend: 'excel',
                     exportOptions: {
-                        columns: [0, 1, 2]
+                        columns: [0, 1]
                     }
                 },
                 {
                     extend: 'pdf',
                     exportOptions: {
-                        columns: [0, 1, 2]
+                        columns: [0, 1]
                     }
                 },
                 {
                     extend: 'print',
                     exportOptions: {
-                        columns: [0, 1, 2]
+                        columns: [0, 1]
                     }
                 }
             ]
