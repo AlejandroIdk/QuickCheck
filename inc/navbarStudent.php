@@ -1,4 +1,3 @@
-<!-- ======= Header ======= -->
 <header id="header" class="header fixed-top d-flex align-items-center">
   <div class="d-flex align-items-center justify-content-between">
     <a href="index.php?vista=home" class="logo d-flex align-items-center">
@@ -42,7 +41,6 @@
   </nav>
 </header>
 
-<!-- ======= Sidebar ======= -->
 <aside id="sidebar" class="sidebar">
   <ul class="sidebar-nav" id="sidebar-nav">
     <li class="nav-item">
@@ -86,10 +84,10 @@
       <h5 class="card-title">Mr Quick <span>| Todo Un Loquillo</span></h5>
 
       <div id="budgetChart" style="min-height: auto;" class="echart"></div>
-      <!-- <img src="./assets/img/pato.gif" alt="" style="width: 200px;"> -->
+      <img src="./assets/img/pato.gif" alt="" style="width: 200px;">
 
     </div>
-  </div><!-- End Budget Report -->
+  </div>
 
 
 </aside>

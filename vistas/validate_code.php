@@ -9,7 +9,13 @@ include "../php/validacioon_codigo.php"
         <div class="field mt-5">
             <label class="label">Código de verificación</label>
             <div class="control">
-                <input class="input form-control" type="text" id="codigo" name="codigo" required>
+                <input class="input form-control" type="text" id="codigo" name="codigo" required maxlength="4" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                <!-- "this.value" Se refiere al elemento de HTML -->
+                <!-- "REPLACE" Busca algo en especifico para ser remplazado -->
+                <!-- "[^0-9]" Rango de caracteres que no esten en un rango de 0 - 9, selecciona cualquier caracter que nos sea numero -->
+                <!-- "/g" Es una cadena global, para que se realice en toda la cadena -->
+                <!-- el usuario escribe en el campo, cualquier carácter que no sea un número es eliminado inmediatamente,
+                    permitiendo solo la entrada de dígitos numéricos -->
             </div>
         </div>
 
