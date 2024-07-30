@@ -3,7 +3,7 @@
 // Conexion a la base de datos 
 function conexion()
 {
-    $pdo = new PDO('mysql:host=localhost;dbname=pdo1', 'root', '');
+    $pdo = new PDO('mysql:host=localhost;dbname=pdo', 'root', '');
     return $pdo;
 }
 

@@ -14,6 +14,7 @@ include "../php/recuperar_contrasena.php"
         </div>
 
         <p class="has-text-centered mb-4 mt-3" style="text-align: center;">
+            <button type="button" class="button is-info is-rounded btn btn-danger" onclick="location.href='../index.php'">Cancelar</button>
             <button type="submit" class="button is-info is-rounded btn btn-primary">Enviar código de recuperación</button>
         </p>
     </form>
