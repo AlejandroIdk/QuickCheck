@@ -50,7 +50,6 @@ $tabla .= '
                         <th>Identificación Usuario</th>
                         <th>Clase</th>
                         <th>Fecha de Asistencia</th>
-                        <th colspan="2">Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -67,12 +66,7 @@ if ($total >= 1 && $pagina <= $Npaginas) {
                     <td>' . $row['usuario_identificacion'] . '</td>
                     <td>' . $row['clase_nombre'] . '</td>
                     <td>' . $row['fecha'] . '</td>
-                    <td>
-                        <a href="index.php?vista=attendance_update&attendance_id_up=' . $row['asistencia_id'] . '" class="button is-success is-rounded is-small">Actualizar</a>
-                    </td>
-                    <td>
-                        <a href="' . $url . $pagina . '&asistencia_id_del=' . $row['asistencia_id'] . '" class="button is-danger is-rounded is-small">Eliminar</a>
-                    </td>
+                 
                 </tr>
             ';
         $contador++;
