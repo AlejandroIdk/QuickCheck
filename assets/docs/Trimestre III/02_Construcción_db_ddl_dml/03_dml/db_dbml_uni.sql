@@ -33,7 +33,7 @@ INSERT INTO `usuario` (`usuario_identificacion`, `usuario_nombre`, `usuario_apel
 -- -----------------------------------------------------
 
 INSERT INTO `clases` (`clase_id`, `clase_nombre`, `clase_ubicacion`) VALUES
-(1, 'SISTEMAS', 'A-201'),
+(1, 'PROGRAMACION DE SOFTWARE', 'A-201'),
 (2, 'INGLES', 'B-101'),
 (3, 'LOGISTICA', 'C-202'),
 (4, 'SEGURIDAD Y SALUD', 'A-204'),

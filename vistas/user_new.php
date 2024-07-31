@@ -62,8 +62,8 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="usuario_identificacion">Identificación:</label>
-                        <input type="text" class="form-control" id="usuario_identificacion" name="usuario_identificacion" pattern="^[0-9]+" maxlength="10">
-                    </div>
+                        <input type="text" class="form-control" id="usuario_identificacion" name="usuario_identificacion" pattern="^[0-9]{10}$" minlength="10" maxlength="10" required>
+                        </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
