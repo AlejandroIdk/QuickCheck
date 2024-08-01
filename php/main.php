@@ -4,18 +4,19 @@
 function conexion()
 {
     $pdo = new PDO('mysql:host=localhost;dbname=pdo', 'root', '');
+    // $pdo = new PDO('mysql:host=mydemoserver.mysql.database.azure.com;port=3306;dbname=databasename', 'myadmin', 'yourpassword');
     return $pdo;
 }
 
 // Verificar datos 
 function verificar_datos($filtro, $cadena)
 {
-    // Utiliza la función preg_match para verificar si la cadena cumple con el filtro dado
+    // función preg_match para verificar si la cadena cumple con el filtro dado
     if (preg_match("/^" . $filtro . "$/", $cadena)) {
         // Si la cadena cumple con el filtro (es decir, hay una coincidencia), retorna false
         return false;
     } else {
-        // Si la cadena no cumple con el filtro (no hay coincidencia), retorna true
+        // Si la cadena no cumple con el filtro, retorna true
         return true;
     }
 }

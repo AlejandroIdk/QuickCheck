@@ -1,5 +1,5 @@
 generateRandomCode(length)
-	Esta función genera un código aleatorio de longitud específica utilizando caracteres alfanuméricos. En tu caso, genera un código de longitud 10 cada vez que se llama.
+	Esta función genera un código aleatorio de longitud específica utilizando caracteres alfanuméricos. Genera un código de longitud 10 cada vez que se llama.
 
 generateQrCode()
 	Esta función es responsable de coordinar la generación del código QR. Aquí está lo que hace paso a paso:

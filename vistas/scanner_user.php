@@ -192,7 +192,7 @@
             // Obtiene los parámetros de la URL para mostrar mensajes
             const urlParams = new URLSearchParams(window.location.search);
             const mensaje = urlParams.get('mensaje');
-            const tipo = urlParams.get('tipo') || 'success'; // Default a 'success' si no se proporciona tipo
+            const tipo = urlParams.get('tipo') || 'success';
 
             // Muestra una alerta en base en el mensaje y tipo obtenido de la URL
             if (mensaje) {

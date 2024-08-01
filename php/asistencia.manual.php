@@ -4,11 +4,15 @@ date_default_timezone_set('America/Bogota');
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require_once "main.php";
 
+    // Limpia y asigna las variables del formulario con valores o cadenas vacías si no se proporcionan
     $usuario_identificacion = limpiar_cadena($_POST['usuario_identificacion'] ?? '');
     $clase_id = limpiar_cadena($_POST['clase_id'] ?? '');
     $fecha = limpiar_cadena($_POST['fecha'] ?? '');
 
+    // Inicializa un array para almacenar campos vacíos
     $campos_vacios = [];
+
+    // Verifica si alguno de los campos está vacío y añade el nombre del campo al array `campos_vacios` si es necesario
     if ($usuario_identificacion === '') {
         $campos_vacios[] = 'Usuario Identificación';
     }
@@ -19,6 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $campos_vacios[] = 'Fecha';
     }
 
+    // Si hay campos vacíos, muestra un mensaje de error y termina la ejecución del script
     if (!empty($campos_vacios)) {
         echo '
             <div class="notification is-danger is-light">
@@ -45,6 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         ';
     } else {
+        // Muestra un mensaje de error si la operación falla
         echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrió un error inesperado!</strong><br>
@@ -53,6 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ';
     }
 } else {
+    // Muestra un mensaje de error si la solicitud no es de tipo POST
     echo '
         <div class="notification is-danger is-light">
             <strong>¡Ocurrió un error inesperado!</strong><br>

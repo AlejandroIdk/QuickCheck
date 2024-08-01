@@ -38,5 +38,3 @@ function enviar_formulario_ajax(e) {
 formularios_ajax.forEach(formulario => {
     formulario.addEventListener("submit", enviar_formulario_ajax);
 });
-
-// confirmacion de enviar formulario pero tiene que ser con sweetalert, dejar las funciones para su correcto funcionamienro solo editar el ¿quieres editar el formulario? por una alerta de sweetalert, todos los formularios estan asi con la clase formualrio_ajax

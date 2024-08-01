@@ -31,6 +31,8 @@
                                 <option value="" selected>Seleccione una opción</option>
                                 <?php
                                 require_once "./php/main.php";
+
+                                // Consulta para obtener la identificación del usuario y sus clases asociadas
                                 $query = "
                             SELECT uc.usuario_identificacion, GROUP_CONCAT(c.clase_id SEPARATOR ', ') as clases_id, GROUP_CONCAT(c.clase_nombre SEPARATOR ', ') as clases_nombre
                             FROM usuario_clase uc
@@ -39,8 +41,10 @@
                             ";
                                 $asistencia = conexion()->query($query);
                                 if ($asistencia->rowCount() > 0) {
+                                    // Si hay resultados, se obtienen todos y se crean las opciones del select
                                     $asistencia = $asistencia->fetchAll();
                                     foreach ($asistencia as $row) {
+                                        // Crear opción para cada usuario
                                         echo '<option value="' . $row['usuario_identificacion'] . '" data-clases-id="' . $row['clases_id'] . '" data-clases-nombre="' . htmlspecialchars($row['clases_nombre']) . '">' . $row['usuario_identificacion'] . '</option>';
                                     }
                                 }
@@ -72,27 +76,28 @@
     </div>
 
     <script>
+        // Espera a que el DOM se cargue completamente antes de ejecutar el script
         document.addEventListener('DOMContentLoaded', function() {
             const selectUsuario = document.querySelector('select[name="usuario_identificacion"]');
             const selectClaseId = document.querySelector('select[name="clase_id"]');
 
+            // Añade un evento de cambio al select de usuarios
             selectUsuario.addEventListener('change', function() {
                 const selectedOption = selectUsuario.options[selectUsuario.selectedIndex];
                 const clasesId = selectedOption.getAttribute('data-clases-id').split(', ');
                 const clasesNombre = selectedOption.getAttribute('data-clases-nombre').split(', ');
 
+                // Limpia las opciones actuales del select de clases
                 selectClaseId.innerHTML = '';
 
+                // Añade nuevas opciones al select de clases basado en la selección del usuario
                 for (let i = 0; i < clasesId.length; i++) {
                     const option = document.createElement('option');
                     option.value = clasesId[i];
                     option.textContent = clasesNombre[i];
                     selectClaseId.appendChild(option);
                 }
-
-                inputClaseNombreAutocompletado.value = clasesNombre[0];
             });
-
-
         });
     </script>
+</main>
