@@ -209,7 +209,7 @@
                         toast: true,
                         position: 'top-end', 
                         showConfirmButton: false,
-                        timer: 500, 
+                        timer: 10000, 
                         timerProgressBar: false
                     });
                 }

@@ -3,9 +3,21 @@
 // Conexion a la base de datos 
 function conexion()
 {
-    $pdo = new PDO('mysql:host=localhost;dbname=pdo', 'root', '');
-    // $pdo = new PDO('mysql:host=mydemoserver.mysql.database.azure.com;port=3306;dbname=databasename', 'myadmin', 'yourpassword');
+    $hostname = "dbpruebaserver.mysql.database.azure.com";
+    $port = "3306";
+    $database = "pdo";
+    $username = "adminprueba";
+    $password = "Prueba@123";
+    $options = array(
+        PDO::MYSQL_ATTR_SSL_CA => 'assets/DigiCertGlobalRootCA.crt.pem'
+    );
+    $pdo = new PDO("mysql:host=$hostname;port=$port;dbname=$database;charset=utf8",$username,$password,$options);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     return $pdo;
+
+    // $pdo = new PDO('mysql:host=localhost;dbname=pdo', 'root', '');
+    // // $pdo = new PDO('mysql:host=mydemoserver.mysql.database.azure.com;port=3306;dbname=databasename', 'myadmin', 'yourpassword');
+    // return $pdo;
 }
 
 // Verificar datos 
