@@ -84,7 +84,6 @@
       <h5 class="card-title">Mr Quick <span>| Todo Un Loquillo</span></h5>
 
       <div id="budgetChart" style="min-height: auto;" class="echart"></div>
-      <img src="./assets/img/pato.gif" alt="" style="width: 200px;">
 
     </div>
   </div>
