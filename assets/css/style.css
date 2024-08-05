@@ -167,9 +167,7 @@ table form{
 	margin-bottom: 0;
 }
 /*----------  Text Styles  ----------*/
-.roboto-medium{
-	font-family: 'cursive';
-}
+
 .roboto-condensed-light{
 	font-family: 'roboto_condensed_light';
 }
@@ -395,7 +393,6 @@ table form{
 	text-transform: uppercase;
 	border-bottom: 1px solid var(--border-color);
 	transition: all .2s ease-in-out;
-	font-family: 'cursive';
 }
 .tile:hover .tile-tittle{
 	color: #FFF;
@@ -412,7 +409,6 @@ table form{
 	font-size: 80px;
 }
 .tile-icon > p{
-	font-family: 'cursive';
 	height: 35px;
 	line-height: 35px;
 }

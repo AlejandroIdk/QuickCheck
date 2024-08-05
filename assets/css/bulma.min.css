@@ -310,7 +310,6 @@ fieldset[disabled] .textarea {
     background: 0 0;
     border: none;
     color: currentColor;
-    font-family: cursive;
     font-size: 1em;
     margin: 0;
     padding: 0
@@ -5232,7 +5231,6 @@ print {
     background: 0 0;
     border: none;
     color: currentColor;
-    font-family: cursive;
     font-size: 1em;
     margin: 0;
     padding: 0;
@@ -13014,10 +13012,7 @@ print {
     padding: 3rem 1.5rem 6rem
 }
 
-a {
-    font-family: cursive;
-    
-}
+
 .navbar-link, .button {
     color: white;
     font-size: medium;
@@ -13028,24 +13023,15 @@ a {
     text-decoration: none;
 }
 
-label,h1,h2,h5, .has-text-centered {
-    font-family: cursive;
 
-}
 .input {
     background: rgba(255, 255, 255, 0.549);
 
 }
 
 h4, p {
-    font-family: cursive;
     color: black;
 }
 span {
-    font-family: cursive;
     color: blue;
-}
-input, .form-control {
-    font-family: cursive;
-
 }
