@@ -39,7 +39,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 
-
 // -----------------------------SOLO NÚMEROS-----------------------------------------------------------------------------------------
 
 document.addEventListener("DOMContentLoaded", function() {
