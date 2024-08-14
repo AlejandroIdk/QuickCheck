@@ -62,7 +62,7 @@ $usuario = $consulta->fetchAll(PDO::FETCH_ASSOC);
     $(document).ready(function() {
         $('#tablaUsuario').DataTable({
             responsive: true,
-            dom: 'Bfrtip', // Para agregar los botones al final de la tabla
+            dom: 'Bfrtip',
             buttons: [{
                     extend: 'copy',
                     exportOptions: {
