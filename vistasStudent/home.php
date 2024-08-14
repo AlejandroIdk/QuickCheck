@@ -3,12 +3,10 @@
 require_once "./php/main.php";
 $conexion = conexion();
 
-// Verificar la conexión
 if (!$conexion) {
     die("Error de conexión: " . $conexion->errorInfo());
 }
 
-// Verificar si el ID del usuario está en la sesión
 if (!isset($_SESSION['id'])) {
     die("ID de usuario no encontrado en la sesión.");
 }
