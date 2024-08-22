@@ -1,5 +1,5 @@
 <?php
-require_once "main.php";
+require_once "../php/main.php";
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST' || !isset($_POST['rol_nombre'])) {
     echo '

@@ -31,7 +31,7 @@
 
 			var formData = new FormData(this);
 
-			fetch('./php/rol_guardar.php', {
+			fetch('./vistas/rol_guardar.php', {
 					method: 'POST',
 					body: formData
 				})
