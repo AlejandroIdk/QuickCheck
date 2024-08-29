@@ -19,33 +19,27 @@ switch (true) {
 }
 
 if ($campo != '') {
-    echo '
-        <div class="notification is-danger is-light">
-            <strong>¡Ocurrió un error inesperado!</strong><br>
-            No has llenado el campo de ' . $campo . ' que es obligatorio
-        </div>
-    ';
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'No has llenado el campo de ' . $campo . ' que es obligatorio'
+    ]);
     exit();
 }
 
 if (verificar_datos("[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{4,50}", $nombre)) {
-    echo '
-            <div class="notification is-danger is-light">
-                <strong>¡Ocurrio un error inesperado!</strong><br>
-                La CLASE no coincide con el formato solicitado
-            </div>
-        ';
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'La CLASE no coincide con el formato solicitado'
+    ]);
     exit();
 }
 
 if ($ubicacion != "") {
-    if (verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{4,50}", $ubicacion)) {
-        echo '
-	            <div class="notification is-danger is-light">
-	                <strong>¡Ocurrio un error inesperado!</strong><br>
-	                El SALÓN no coincide con el formato solicitado
-	            </div>
-	        ';
+    if (verificar_datos("[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\- ]{2,50}", $ubicacion)) {  
+        echo json_encode([
+            'status' => 'error',
+            'message' => 'El SALÓN no coincide con el formato solicitado'
+        ]);
         exit();
     }
 }
@@ -53,12 +47,10 @@ if ($ubicacion != "") {
 $check_nombre = conexion();
 $check_nombre = $check_nombre->query("SELECT clase_nombre FROM clases WHERE clase_nombre='$nombre'");
 if ($check_nombre->rowCount() > 0) {
-    echo '
-            <div class="notification is-danger is-light">
-                <strong>¡Ocurrio un error inesperado!</strong><br>
-                La CLASE ingresado ya se encuentra registrado, por favor elija otro
-            </div>
-        ';
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'La CLASE ingresada ya se encuentra registrada, por favor elija otro'
+    ]);
     exit();
 }
 $check_nombre = null;
@@ -74,18 +66,14 @@ $marcadores = [
 $guardar_clases->execute($marcadores);
 
 if ($guardar_clases->rowCount() == 1) {
-    echo '
-            <div class="notification is-info is-light">
-                <strong>¡CLASE REGISTRADA!</strong><br>
-                La clase se registro con exito
-            </div>
-        ';
+    echo json_encode([
+        'status' => 'success',
+        'message' => 'La clase se registró con éxito'
+    ]);
 } else {
-    echo '
-            <div class="notification is-danger is-light">
-                <strong>¡Ocurrio un error inesperado!</strong><br>
-                No se pudo registrar la clase, por favor intente nuevamente
-            </div>
-        ';
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'No se pudo registrar la clase, por favor intente nuevamente'
+    ]);
 }
 $guardar_clases = null;

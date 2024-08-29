@@ -1,22 +1,16 @@
 <main id="main" class="main">
-    <div class="pagetitle justify-content-center">
-        <nav>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.php?vista=class_new">Crear Clase</a></li>
-                <li class="breadcrumb-item"><a href="index.php?vista=class_list">Lista de Clases</a></li>
-                <li class="breadcrumb-item"><a href="index.php?vista=class_search">Buscar Clase</a></li>
-            </ol>
-        </nav>
-    </div>
     <?php
     include "./inc/btn_back.php";
+    ?>
+     <?php
+    include "./inc/btn_create_class.php";
     ?>
     <div class="container is-fluid mb-6">
         <h1 class="title">Clases</h1>
         <h2 class="subtitle">Lista de Clases</h2>
     </div>
 
-    <div class="container pb-6 pt-6">
+    <div class="container pb-6 ">
         <?php
         require_once "./php/main.php";
 
@@ -40,4 +34,17 @@
 
         require_once "./php/clase_lista.php";
         ?>
+
     </div>
+</main>
+<style>
+/* .has-button{
+   margin-top: 0px;
+    margin-bottom:  50px;
+} */
+.container-btn {
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+</style>

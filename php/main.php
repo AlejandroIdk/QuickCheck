@@ -15,9 +15,9 @@ function conexion()
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     return $pdo;
 
-    // $pdo = new PDO('mysql:host=localhost;dbname=pdo', 'root', '');
+    //  $pdo = new PDO('mysql:host=localhost;dbname=pdo', 'root', '');
     // // $pdo = new PDO('mysql:host=mydemoserver.mysql.database.azure.com;port=3306;dbname=databasename', 'myadmin', 'yourpassword');
-    // return $pdo;
+    //  return $pdo;
 }
 
 // Verificar datos 

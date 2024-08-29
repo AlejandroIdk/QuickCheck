@@ -17,10 +17,7 @@
 	</div>
 
 	<div class="container pb-6 pt-6">
-
-		<div class="form-rest"></div>
-
-		<form action="./php/clase_guardar.php" method="POST" class="FormularioAjax" autocomplete="off">
+		<form id="formularioClase" class="FormularioAjax" autocomplete="off">
 			<div class="columns">
 				<div class="column">
 					<div class="control">
@@ -31,7 +28,7 @@
 				<div class="column">
 					<div class="control">
 						<label>Salón:</label>
-						<input class="input" type="text" name="clase_ubicacion" id="clase_ubicacion" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{4,50}" maxlength="150">
+						<input class="input" type="text" name="clase_ubicacion" id="clase_ubicacion" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\- ]{2,50}" maxlength="150">
 					</div>
 				</div>
 			</div>
@@ -40,3 +37,58 @@
 			</p>
 		</form>
 	</div>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+   document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('.FormularioAjax');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); 
+
+        const formData = new FormData(form);
+
+        fetch('./php/clase_guardar.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'error') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: data.message
+                });
+            } else if (data.status === 'success') {
+                Swal.fire({
+                    title: 'ATENCION',
+                    text: "¿Està seguro de crear està clase?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Sí, enviar',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Éxito',
+                            text: data.message
+                        }).then(() => {
+                            window.location.reload(); 
+                        });
+                    }
+                });
+            }
+        })
+        .catch(error => {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Ocurrió un error al procesar la solicitud.'
+            });
+        });
+    });
+});
+    </script>
