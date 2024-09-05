@@ -31,11 +31,11 @@ try {
                             <div class="card text-center">
                                 <div class="card-body">
                                     <h5 class="card-title">
-                                        <?= htmlspecialchars($_SESSION['id']) ?> 
+                                        <?= htmlspecialchars($_SESSION['id']) ?>
                                         <span>| <?= htmlspecialchars($row["clase_nombre"]) ?></span>
                                     </h5>
                                     <h6 class="mt-3">Tu QR</h6>
-                                    <?php 
+                                    <?php
                                     $qrCodeUrl = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" . urlencode($row["generated_code"]);
                                     ?>
                                     <img src="<?= htmlspecialchars($qrCodeUrl) ?>" alt="QR Code" class="img-fluid mt-3" width="200px">
@@ -49,7 +49,6 @@ try {
     </div>
 </main>
 
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>

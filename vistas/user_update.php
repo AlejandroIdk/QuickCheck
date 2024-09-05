@@ -8,8 +8,8 @@ $id = limpiar_cadena($id);
 
     <div class="container is-fluid">
         <?php if ($id == $_SESSION['id'])  ?>
-            <h1 class="title">Mi cuenta</h1>
-            <h2 class="subtitle">Actualizar datos de cuenta</h2>
+        <h1 class="title">Mi cuenta</h1>
+        <h2 class="subtitle">Actualizar datos de cuenta</h2>
     </div>
 
     <div class="container pb-6 ">

@@ -1,5 +1,5 @@
 <main id="main" class="main">
-<div class="pagetitle justify-content-center">
+    <div class="pagetitle justify-content-center">
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php?vista=user_new">Crear Usuario</a></li>
@@ -8,8 +8,6 @@
             </ol>
         </nav>
     </div>
-
-   
 
     <?php
     require_once "./php/main.php";
@@ -81,7 +79,7 @@
                 </div>
 
                 <p class="has-text-centered">
-                    <button type="submit" class="button btn btn-primary is-rounded mt-5"  style="background-color: green;">Actualizar</button>
+                    <button type="submit" class="button btn btn-primary is-rounded mt-5" style="background-color: green;">Actualizar</button>
                 </p>
             </form>
 

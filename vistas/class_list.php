@@ -2,7 +2,7 @@
     <?php
     include "./inc/btn_back.php";
     ?>
-     <?php
+    <?php
     include "./inc/btn_create_class.php";
     ?>
     <div class="container is-fluid mb-6">
@@ -38,13 +38,12 @@
     </div>
 </main>
 <style>
-/* .has-button{
+    /* .has-button{
    margin-top: 0px;
     margin-bottom:  50px;
 } */
-.container-btn {
-    margin-top: 30px;
-    margin-bottom: 50px;
-}
-
+    .container-btn {
+        margin-top: 30px;
+        margin-bottom: 50px;
+    }
 </style>

@@ -7,7 +7,7 @@
     let btn_back = document.querySelector(".btn-back");
 
     // Añade un evento 'click' al botón de regresar
-    btn_back.addEventListener('click', function(e){
+    btn_back.addEventListener('click', function(e) {
         // Evita el comportamiento predeterminado del enlace
         e.preventDefault();
         // Navega hacia atrás en el historial del navegador

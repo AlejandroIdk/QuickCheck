@@ -9,7 +9,7 @@
         </nav>
     </div>
     <?php
-        include "./inc/btn_back.php";
+    include "./inc/btn_back.php";
     ?>
     <div class="container-fluid">
         <h1 class="display-4">Usuarios</h1>
@@ -20,7 +20,7 @@
         <?php
         require_once "./php/main.php";
         ?>
-        
+
         <div class="form-rest"></div>
         <form action="./php/usuario_guardar.php" method="POST" class="FormularioAjax" autocomplete="off" enctype="multipart/form-data">
             <div class="row">
@@ -63,7 +63,7 @@
                     <div class="form-group">
                         <label for="usuario_identificacion">Identificación:</label>
                         <input type="text" class="form-control" id="usuario_identificacion" name="usuario_identificacion" pattern="^[0-9]{10}$" minlength="10" maxlength="10" required>
-                        </div>
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">

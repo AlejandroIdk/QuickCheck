@@ -22,7 +22,7 @@ $usuario = $consulta->fetchAll(PDO::FETCH_ASSOC);
         </nav>
     </div>
     <?php
-        include "./inc/btn_back.php";
+    include "./inc/btn_back.php";
     ?>
 
     <div class="container is-fluid">

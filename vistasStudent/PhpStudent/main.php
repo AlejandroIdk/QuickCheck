@@ -82,7 +82,7 @@ function limpiar_cadena($cadena)
 
 
 
-// Funcion paginador de tablas
+// paginador de tablas
 function paginador_tablas($pagina, $Npaginas, $url, $botones)
 {
     // Inicia la estructura del componente de paginación con clases de Bulma CSS

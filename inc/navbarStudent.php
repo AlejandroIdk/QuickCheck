@@ -88,9 +88,7 @@
     </div>
   </div>
 
-
 </aside>
-
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {

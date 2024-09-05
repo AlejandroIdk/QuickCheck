@@ -150,19 +150,18 @@
         // Inicializa DataTables y configura la tabla de asistencia
         $(document).ready(function() {
             $('#tablaASistencia').DataTable({
-                responsive: true, // Hacer que la tabla sea responsiva
-                dom: 'Bfrtip', // Configura los elementos a mostrar: Botones, filtro, tabla
-                buttons: [
-                    {
-                        extend: 'copy', // Botón para copiar datos al portapapeles
+                responsive: true,
+                dom: 'Bfrtip',
+                buttons: [{
+                        extend: 'copy',
                         exportOptions: {
-                            columns: [0, 1, 2, 3, 4, 5] // Especifica qué columnas se copiarán
+                            columns: [0, 1, 2, 3, 4, 5]
                         }
                     },
                     {
-                        extend: 'csv', // Botón para exportar datos en formato CSV
+                        extend: 'csv',
                         exportOptions: {
-                            columns: [0, 1, 2, 3, 4, 5] // Especifica qué columnas se exportarán
+                            columns: [0, 1, 2, 3, 4, 5]
                         }
                     },
                     {
@@ -180,7 +179,7 @@
                     {
                         extend: 'print',
                         exportOptions: {
-                            columns: [0, 1, 2, 3, 4, 5] 
+                            columns: [0, 1, 2, 3, 4, 5]
                         }
                     }
                 ],
@@ -207,9 +206,9 @@
                         icon: tipo, // Tipo de alerta: éxito o error basado en 'tipo'
                         title: mensaje, // Mensaje a mostrar
                         toast: true,
-                        position: 'top-end', 
+                        position: 'top-end',
                         showConfirmButton: false,
-                        timer: 10000, 
+                        timer: 10000,
                         timerProgressBar: false
                     });
                 }

@@ -9,7 +9,7 @@
         </nav>
     </div>
     <?php
-        include "./inc/btn_back.php";
+    include "./inc/btn_back.php";
     ?>
     <div class="container is-fluid">
         <h1 class="title">Clases</h1>

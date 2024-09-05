@@ -58,7 +58,7 @@
                     }
 
                     $pagina = limpiar_cadena($pagina);
-                    $url = "index.php?vista=attendance_class_category&category_id=$clase_id&page="; /* <== */
+                    $url = "index.php?vista=attendance_class_category&category_id=$clase_id&page=";
                     $registros = 15;
                     $busqueda = "";
 

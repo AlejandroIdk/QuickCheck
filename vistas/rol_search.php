@@ -1,5 +1,4 @@
-
-    <main id="main" class="main">
+<main id="main" class="main">
     <div class="pagetitle">
         <nav>
             <ol class="breadcrumb">
@@ -10,7 +9,7 @@
         </nav>
     </div>
     <?php
-        include "./inc/btn_back.php";
+    include "./inc/btn_back.php";
     ?>
 
 

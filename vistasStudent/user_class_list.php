@@ -17,7 +17,7 @@ $usuario_clase = $consulta->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <main id="main" class="main">
-    
+
     <?php
     include "./inc/btn_back.php";
     ?>

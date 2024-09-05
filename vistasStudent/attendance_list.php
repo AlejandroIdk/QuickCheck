@@ -15,7 +15,7 @@ $asistencia = $consulta->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <main id="main" class="main">
- 
+
     <?php
     include "./inc/btn_back.php";
     ?>
@@ -47,7 +47,7 @@ $asistencia = $consulta->fetchAll(PDO::FETCH_ASSOC);
                             <td><?php echo $ass['usuario_nombre']; ?></td>
                             <td><?php echo $ass['usuario_apellido']; ?></td>
                             <td><?php echo $ass['fecha']; ?></td>
-                          
+
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
